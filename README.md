@@ -1,5 +1,5 @@
 # Fame To Blame
-PROJET DES CODING WEEKS 2021-2022 de MIST
+CODING WEEKS 2021-2022 TEAM MIST
 
 Description
 This project is the 4th project of the second week of the CentraleSupélec Coding Weeks
