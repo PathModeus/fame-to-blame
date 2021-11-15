@@ -32,5 +32,4 @@ def storeTweet(tweets):
         tweet['Texte']=tweets[i]['text']
         tweet['Date']=tweets[i]['created_at']
         T.append(tweet)
-    createjson(T,'t')
-
+    createjson(T,'Data/t.json')
