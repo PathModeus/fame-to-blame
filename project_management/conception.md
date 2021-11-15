@@ -1,4 +1,4 @@
-- Sprint 1 et 2 : Gaspard et Matthieu
+- Sprint 1 et 2 : Gaspard et Matthieu -> DONE
 - Sprint 3 : Ludovic et Mathilde
 - Sprint 4 : Siméon et Tom
 
