@@ -1,15 +1,22 @@
 import tweepy
 import sys
 import time
-sys.path.insert(1, r'c:\Users\gaspa\OneDrive\Documents\CS\Coding Weeks')
-from credentials import *
 
-def twitter_setup():
+
+def twitter_setup(abs_path):
     """
     Utility function to setup the Twitter's API
     with an access keys provided in a file credentials.py
     :return: the authentified API
+    
+    Input :
+        The function asks for a str which is the absolute path of credentials.py 
+        ex : 'c:/absolute/path/of'
     """
+    #adding credentials.py to the path and importing var:
+    sys.path.insert(1, abs_path)
+    from credentials import *
+
     # Authentication and access using keys:
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
