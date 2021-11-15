@@ -1,8 +1,6 @@
 import numpy as np
-'''
-This module analyses different datas on the tweets collected,
-such as the frequency of salty tweets, the mean of the lenght of salty tweets...
-'''
+import dash
+'''We analyse different datas on the tweets collected, like the frequency of salty tweets, the mean of the lenght of salty tweets...'''
 
 def salty(tweet):
     '''
@@ -65,5 +63,12 @@ def ranking(list_of_tweets):
     ordered=[list_of_tweets[0]]
     for i in range(1,len(list_of_tweets)):
         pos=rank(freq[:i+1],i)
+<<<<<<< HEAD
         ordered.insert(pos,list_of_tweets[i])
     return ordered
+=======
+        ordered.insert(pos,LOT[i])
+    return ordered
+
+###Graphe
+>>>>>>> ce020f1266f723567236dfc2b328d82636761066

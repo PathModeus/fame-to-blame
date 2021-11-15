@@ -20,9 +20,11 @@ def extractjson(file):
   
     return(data)
 
-def storeTweet(tweets):
+def storeTweet(tweets,name):
     """
     Met sous forme .json les tweets collectés en sélectionnant les données à conserver
+    name est une chaîne de caractères contenant le nom à donner au fichier
+    
     """
     T=[]
     for i in range(len(tweets)):
@@ -32,4 +34,4 @@ def storeTweet(tweets):
         tweet['Texte']=tweets[i]['text']
         tweet['Date']=tweets[i]['created_at']
         T.append(tweet)
-    createjson(T,'Data/t.json')
+    createjson(T,'Data/' + name + '.json')
