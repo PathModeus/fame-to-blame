@@ -36,3 +36,5 @@ Fonctionnalité 13 : WordCloud pour chaque personnalité
 Sprint 8 :
 IA qui apprend les formules insultantes
 Fonctionnalité 14 : Mise en place d'une chaîne d'apprentissage supervisé
+
+
