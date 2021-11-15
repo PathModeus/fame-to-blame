@@ -5,7 +5,7 @@ import pandas as pd
 
 num_candidate = str(input('Entrez le numéro de candidat '))
 twitter_api = twitter_setup() #On se connecte à l'API
-keywords = get_candidate_queries(num_candidate, 'Data\keywords_candidate_') #On récupère les mots-clés à rechercher
+keywords = get_candidate_queries(num_candidate, 'Data\keywords_celebrity_') #On récupère les mots-clés à rechercher
 result=get_tweets_from_candidates_search_queries(keywords,twitter_api)
 result=result+get_replies_to_candidate(num_candidate,twitter_api)
 result=result+get_retweets_of_candidate(num_candidate,twitter_api)
