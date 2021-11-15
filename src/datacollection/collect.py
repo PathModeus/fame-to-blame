@@ -43,15 +43,12 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
     """
     returns the tweets corresponding to the query
     """
-    try:
-        L = []
-        for query in queries:
-            tweets = twitter_api.search_tweets(query)
-            for tweet in tweets:
-                L.append(tweet)
-        return L
-    except tweepy.TweepError:
-        return "An error has occured."
+    L = []
+    for query in queries:
+        tweets = twitter_api.search_tweets(query)
+        for tweet in tweets:
+            L.append(tweet)
+    return L
 
 def get_replies_to_candidate(num_candidate, twitter_api):
     """

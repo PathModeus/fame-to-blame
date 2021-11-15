@@ -1,5 +1,5 @@
 from collect import twitter_setup,get_candidate_queries,get_tweets_from_candidates_search_queries,get_replies_to_candidate,get_retweets_of_candidate,stream
-from storetweet import storeTweet
+from storetweet import storeTweet,extractjson
 import json
 import pandas as pd
 
@@ -17,4 +17,5 @@ for status in result:
     except AttributeError:
         tweets.append(json.loads(status.decode('utf-8')))
 storeTweet(tweets)
-dataframe=pd.DataFrame.from_dict
+dataframe=pd.DataFrame.from_dict(extractjson('Data/t.json'))
+print(dataframe)
