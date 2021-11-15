@@ -1,11 +1,6 @@
 import tweepy
 import sys
 import time
-<<<<<<< HEAD
-sys.path.insert(1, 'c:/Users/gaspa/OneDrive/Documents/CS/Coding Weeks')
-from credentials import *
-=======
->>>>>>> Tom
 
 
 def twitter_setup(abs_path):
@@ -20,7 +15,7 @@ def twitter_setup(abs_path):
     """
     #adding credentials.py to the path and importing var:
     sys.path.insert(1, abs_path)
-    from credentials import *
+    from credentials import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET
 
     # Authentication and access using keys:
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
@@ -68,8 +63,8 @@ def get_replies_to_candidate(num_candidate, twitter_api):
     """
     name = get_candidate_queries(
         num_candidate, 'Data\keywords_candidate_')[0]
-    id = get_id(name)
-    tweet = collect_by_user(id, 1)
+    id = get_id(name,twitter_api)
+    tweet = collect_by_user(id, twitter_api, 1)
     tweet_id = tweet[0].id
     replies = tweet
     pot_replies = twitter_api.search_tweets(q='to:'+name)
@@ -85,22 +80,20 @@ def get_retweets_of_candidate(num_candidate, twitter_api):
     """
     name = get_candidate_queries(
         num_candidate, 'Data\keywords_candidate_')[0]
-    id = get_id(name)
-    tweet = collect_by_user(id, 1)
+    id = get_id(name, twitter_api)
+    tweet = collect_by_user(id, twitter_api, 1)
     tweet_id = tweet[0].id
     retweets = twitter_api.get_retweets(id=tweet_id)
     return retweets
 
 
-# print(get_replies_to_candidate(2, twitter_setup()))
-# print(get_retweets_of_candidate(2, twitter_setup()))
-
-def stream(keywords,duration):
+def stream(keywords,duration,path_to_credentials):
+    sys.path.insert(1, path_to_credentials)
+    from credentials import CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET
     class MyListener(tweepy.Stream):
             
         def on_data(self, data):
             if time.time()-t0>duration:
-                print("Disconnecting...")
                 twitter_stream.disconnect()
             else:
                 L.append(data)
@@ -110,7 +103,6 @@ def stream(keywords,duration):
         # Initialize instance of the subclass
     t0=time.time()
     L=[]
-    print("Streaming")
     twitter_stream = MyListener(
         CONSUMER_KEY, CONSUMER_SECRET,
         ACCESS_TOKEN, ACCESS_SECRET
@@ -118,24 +110,21 @@ def stream(keywords,duration):
     twitter_stream.filter(track=keywords)
     return L
 
-def get_id(screen_name):
-    api = twitter_setup()
-    user = api.get_user(screen_name=screen_name)
+def get_id(screen_name,twitter_api):
+    user = twitter_api.get_user(screen_name=screen_name)
     ID = user.id_str
     return ID
 
 
-def collect(keyword):
+def collect(keyword,twitter_api):
     L = []
-    connexion = twitter_setup()
-    tweets = connexion.search_tweets(
+    tweets = twitter_api.search_tweets(
         keyword, language="french", rpp=100)
     for tweet in tweets:
         L.append(tweet)
     return L
 
 
-def collect_by_user(user_id, limit=200):
-    api = twitter_setup()
-    statuses = api.user_timeline(user_id=user_id, count=limit)
+def collect_by_user(user_id,twitter_api, limit=200):
+    statuses = twitter_api.user_timeline(user_id=user_id, count=limit)
     return statuses
