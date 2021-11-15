@@ -1,5 +1,10 @@
-import csv
+"""csv_to_list module
+    Description :
+        Converts a csv database into a list of strings (per line of the database)
+    Contains:
+        convert_database : returns a list of strings"""
 
+import csv
 
 def convert_database(doc):
     """Return a list of the data stocked in a csv file
@@ -18,6 +23,6 @@ def convert_database(doc):
         for row in spamreader:
             database.append(row[0])
     return database
-path='Data/swear_words_database.csv'
+path='data/swear_words_database.csv'
 
 swear_words_data=convert_database(path)

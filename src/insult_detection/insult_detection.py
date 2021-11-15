@@ -1,3 +1,14 @@
+"""
+Insult detection module 
+    Description: 
+        Detects and returns the insults in a tweet or a dataframe
+    Contains:
+        detect_insult_tweet(tweet) : returns a list of insults(type strings)
+
+        detect_insults_tweets(data) : returns a dictionnary (per celebrity_ID) of list of lists,
+        each sub-list containing the insults in one tweet
+    """
+
 from textblob import TextBlob
 from textblob import Word
 
