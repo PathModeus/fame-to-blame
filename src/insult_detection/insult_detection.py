@@ -1,11 +1,13 @@
+'''
+Completing doc
+'''
+
 from textblob import TextBlob
 from textblob import Word
-
-
 from csv_to_list import convert_database
 
-path='Data/swear_words_database.csv'
-swear_words_data=convert_database(path)
+PATH='data/swear_words_database.csv'
+swear_words_data=convert_database(PATH)
 def detect_insult_tweet(tweet):
     """Return a list of the insults contained in a tweet
     Parameters

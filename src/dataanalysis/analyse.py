@@ -1,6 +1,8 @@
 import numpy as np
 import dash
-'''We analyse different datas on the tweets collected, like the frequency of salty tweets, the mean of the lenght of salty tweets...'''
+'''
+The module analyses different datas on the tweets collected, like the frequency of salty tweets, the mean of the lenght of salty tweets...
+'''
 
 def salty(tweet):
     '''
