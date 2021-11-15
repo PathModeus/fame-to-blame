@@ -1,7 +1,7 @@
 import tweepy
 import sys
 import time
-sys.path.insert(1, r'c:\Users\gaspa\OneDrive\Documents\CS\Coding Weeks')
+sys.path.insert(1, 'c:/Users/gaspa/OneDrive/Documents/CS/Coding Weeks')
 from credentials import *
 
 def twitter_setup():
