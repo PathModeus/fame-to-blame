@@ -1,49 +1,69 @@
 import numpy as np
-'''We analyse different datas on the tweets collected, like the frequency of salty tweets, the mean of the lenght of salty tweets...'''
+'''
+This module analyses different datas on the tweets collected,
+such as the frequency of salty tweets, the mean of the lenght of salty tweets...
+'''
 
-###initialisation
 def salty(tweet):
-    #to define
+    '''
+    Returns True if the tweet contains an insult and False if not
+    '''
+    return tweet
 
-def salty_list(tweets): #this function returns the list of the salty tweets and the list of the non-salty tweets
-    S=[] #salty tweets
-    NS=[]
-    for t in tweets:
-        if salty(t):
-            S.append(t)
+def salty_list(tweets):
+    '''
+    returns the list of the salty tweets and the list of the non-salty tweets
+    '''
+    salt=[] #salty tweets
+    nosalt=[]
+    for single_tweet in tweets:
+        if salty(single_tweet):
+            salt.append(single_tweet)
         else:
-            NS.append(t)
-    return S,NS
+            nosalt.append(single_tweet)
+    return salt,nosalt
 
-def rank(L,i): #returns the rank of L[i] in L
+def rank(list,i):
+    '''
+    returns the rank of list[i] in list
+    '''
     pos=0
-    for j in range(len(L)):
-        if L[j]<L[i]:
+    for j in list:
+        if j<list[i]:
             pos+=1
     return pos
 
-###analyse
+
 def frequency(tweets):
-    n=len(tweets)
-    p=0 #number of salty tweets
-    for t in tweets:
-        if salty(t): #the function salty tests if the tweet is salty
-            p+=1
-    return p/n
+    '''
+    returns the frequency of tweet containing insults
+    '''
+    tot=len(tweets)
+    prop=0 #number of salty tweets
+    for single_tweet in tweets:
+        if salty(single_tweet): #the function salty tests if the tweet is salty
+            prop+=1
+    return prop/tot
 
-def lenght(tweets): #returns the mean of the lenght of tweets, salty tweets and non-salty tweets
-    m=np.mean([len(t) for t in tweets])
-    S,NS=salty_list(tweets)
-    ms=np.mean([len(t) for t in S])
-    mns=np.mean([len(t) for t in NS])
-    return m,ms,mns
+def length(tweets):
+    '''
+    returns the mean of the length of tweets, salty tweets and non-salty tweets
+    '''
+    mean=np.mean([len(single_tweet) for single_tweet in tweets])
+    salty,nosalty=salty_list(tweets)
+    mean_salty=np.mean([len(single_tweet) for single_tweet in salty])
+    mean_nosalty=np.mean([len(single_tweet) for single_tweet in nosalty])
+    return mean,mean_salty,mean_nosalty
 
-def ranking(LOT): #orddering a list of tweets from the most insulting to the less insulting
+def ranking(list_of_tweets):
+    '''
+    ordering a list of tweets from the most insulting to the less insulting
+    '''
     freq=[]
-    for tweets in LOT:
+    for tweets in list_of_tweets:
         freq.append(frequency(tweets))
-    ordered=[LOT[0]]
-    for i in range(1,len(LOT)):
+    ordered=[list_of_tweets[0]]
+    for i in range(1,len(list_of_tweets)):
         pos=rank(freq[:i+1],i)
-        ordered.insert(pos,LOT[i])
+        ordered.insert(pos,list_of_tweets[i])
     return ordered
