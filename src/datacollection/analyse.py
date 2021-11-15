@@ -15,6 +15,13 @@ def salty_list(tweets): #this function returns the list of the salty tweets and 
             NS.append(t)
     return S,NS
 
+def rank(L,i): #returns the rank of L[i] in L
+    pos=0
+    for j in range(len(L)):
+        if L[j]<L[i]:
+            pos+=1
+    return pos
+
 ###analyse
 def frequency(tweets):
     n=len(tweets)
@@ -30,3 +37,13 @@ def lenght(tweets): #returns the mean of the lenght of tweets, salty tweets and 
     ms=np.mean([len(t) for t in S])
     mns=np.mean([len(t) for t in NS])
     return m,ms,mns
+
+def ranking(LOT): #orddering a list of tweets from the most insulting to the less insulting
+    freq=[]
+    for tweets in LOT:
+        freq.append(frequency(tweets))
+    ordered=[LOT[0]]
+    for i in range(1,len(LOT)):
+        pos=rank(freq[:i+1],i)
+        ordered.insert(pos,LOT[i])
+    return ordered
