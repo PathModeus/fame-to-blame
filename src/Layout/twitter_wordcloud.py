@@ -76,5 +76,4 @@ plt.imshow(wc)
 
 # create coloring from image
 
-
 plt.show()
