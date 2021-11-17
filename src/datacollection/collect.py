@@ -30,7 +30,7 @@ def get_candidate_queries(number, file_path):
     """
     Generate and return a list of string queries for the API from the file file_path_number.txt
     :param number: the number of the celebrity
-    :param file_path: the path to the folder containing the datas
+    :param file_path: the common part of the path to the datas, ex : path/to/keywords_celebrity_
     :return: (list) a list of string queries that can be done to the search API independently
     """
     try:
@@ -67,8 +67,11 @@ def get_replies_to_candidate(number, twitter_api):
     :return: (list) a list containing the tweets replying to the candidate
 
     """
-    name = get_candidate_queries(
-        number, 'Data/keywords_candidate_')[0]
+    queries = get_candidate_queries(
+        number, 'Data/keywords_celebrity_')
+    if queries == "The requested datas are not available in our database.":
+        return "This candidate is not in our database"
+    name = queries[0]
     tweet = collect_by_user(get_id(name,twitter_api), twitter_api, 1)
     tweet_id = tweet[0].id
     replies = tweet
@@ -87,7 +90,10 @@ def get_retweets_of_candidate(number, twitter_api):
     :return: (list) a list containing the tweets retweeting the last tweet of the candidate
 
     """
-    name = get_candidate_queries(number, 'Data/keywords_candidate_')[0]
+    queries = get_candidate_queries(number, 'Data/keywords_celebrity_')
+    if queries == "The requested datas are not available in our database.":
+        return "This candidate is not in our database"
+    name = queries[0]
     tweet = collect_by_user(get_id(name, twitter_api), twitter_api, 1)
     tweet_id = tweet[0].id
     retweets = twitter_api.get_retweets(id=tweet_id)
@@ -123,16 +129,20 @@ def stream(keywords,duration,path_to_credentials):
         CONSUMER_KEY, CONSUMER_SECRET,
         ACCESS_TOKEN, ACCESS_SECRET
     )
+    if keywords == []:
+        return "Please insert keywords"
     twitter_stream.filter(track=keywords)
     return streamed_tweets
 
 def get_id(screen_name,twitter_api):
     """
     returns the id of a user using his screen name
-    :param screen_name: (str) the twitter screen_name of the account which we want to obtain the id
+    :param screen_name: (str) the twitter screen_name of the account of which we want to obtain the id
     :param twitter_api: API object obtained with the function twitter_setup
     :return: (int) the user's id
     """
+    if screen_name == '':
+        return "Please enter a screen name."
     user = twitter_api.get_user(screen_name=screen_name)
     user_id = user.id_str
     return user_id
@@ -145,6 +155,8 @@ def collect(keyword,twitter_api):
     :param twitter_api: API object obtained with the function twitter_setup
     :return: (list) a list of tweets containing the keyword
     """
+    if type(keyword) != str or keyword == '':
+        return "Please enter a valid keyword (string)."
     result = []
     tweets = twitter_api.search_tweets(
         keyword, language="french", rpp=100)
