@@ -143,7 +143,7 @@ def stream(keywords,duration,path_to_credentials):
 def get_id(screen_name,twitter_api):
     """
     returns the id of a user using his screen name
-    :param screen_name: (str) the twitter screen_name of the account of which we want to obtain the id
+    :param screen_name: (str) the twitter screen_name of the account which id we want to obtain
     :param twitter_api: API object obtained with the function twitter_setup
     :return: (int) the user's id
     """
@@ -164,7 +164,7 @@ def collect(keyword,twitter_api):
     :param twitter_api: API object obtained with the function twitter_setup
     :return: (list) a list of tweets containing the keyword
     """
-    if type(keyword) != str or keyword == '':
+    if not(isinstance(keyword,str)) or keyword == '':
         return "Please enter a valid keyword (string)."
     result = []
     tweets = twitter_api.search_tweets(
