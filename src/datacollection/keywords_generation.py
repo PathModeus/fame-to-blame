@@ -33,3 +33,5 @@ def writing_keyword(celeb_number,keywords):
         return "The files are created."
     except FileNotFoundError:
         return "The file does not exist."
+
+cleanup()
