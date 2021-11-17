@@ -7,9 +7,25 @@ from wordcloud import WordCloud, ImageColorGenerator
 from textblob import TextBlob
 from textblob import Word
 import json
+import csv
 
-from insult_detection.csv_to_list import convert_database
+def convert_database(doc):
+    """Return a list of the data stocked in a csv file
+    
+    Parameters
+    -----------
+    doc : csv file
 
+    Returns:
+    -----------
+    database : list of strings of each line of the csv file
+    """
+    database=[]
+    with open(doc, newline='') as csvfile:
+        spamreader = csv.reader(csvfile)
+        for row in spamreader:
+            database.append(row[0])
+    return database
 
 PATH='data/swear_words_database.csv'
 swear_words_data=convert_database(PATH)
@@ -20,15 +36,15 @@ swear_words_data=convert_database(PATH)
 
 def antibrouillard(text):
     d = {}
-    mots = text.split(' ')
     u = []
-    for x in mots:
+    for x in text:
         var_convert = TextBlob(x)
         y = var_convert
         y = Word(y).lemmatize()
         y = str(y)
         if y in swear_words_data : 
             u.append(y)
+        print(u)
     v = "".join(u)
     return v
 
@@ -55,7 +71,7 @@ wc = WordCloud(max_words=2000, mask=bird_mask,
                max_font_size=40, random_state=42, relative_scaling=0)
 
 # generate word cloud
-wc.generate(antibrouillard(text))
+wc.generate(antibrouillard(swear_words_data))
 plt.imshow(wc)
 
 # create coloring from image
