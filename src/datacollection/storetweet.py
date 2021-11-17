@@ -1,12 +1,14 @@
+"""
+All the functions necessary to store the collected tweets
+"""
 import json
-import pandas as pd
 
 def createjson(tweets,file):
     """
     Cette fonction créé un fichier file.json contenant les données tweets.
     """
     data=tweets
-    with open(file, "w") as write_file:
+    with open(file, "w", encoding='utf-8)') as write_file:
         json.dump(data, write_file)
 
 def extractjson(file):
@@ -15,23 +17,21 @@ def extractjson(file):
 
     file est de la forme : chemin/vers/le/fichier/fichier.json
     """
-    with open(file, "r") as read_file:
+    with open(file, "r", encoding='utf-8') as read_file:
         data = json.load(read_file)
-  
-    return(data)
+    return data
 
-def storeTweet(tweets,name):
+def store_tweets(collected_tweets,name):
     """
     Met sous forme .json les tweets collectés en sélectionnant les données à conserver
     name est une chaîne de caractères contenant le nom à donner au fichier
-    
     """
-    T=[]
-    for i in range(len(tweets)):
+    returned_tweets=[]
+    for collected_tweet in collected_tweets:
         tweet={}
-        tweet['Likes']=tweets[i]['favorite_count']
-        tweet['RT']=tweets[i]['retweet_count']
-        tweet['Texte']=tweets[i]['text']
-        tweet['Date']=tweets[i]['created_at']
-        T.append(tweet)
-    createjson(T,'Data/' + name + '.json')
+        tweet['Likes']=collected_tweet['favorite_count']
+        tweet['RT']=collected_tweet['retweet_count']
+        tweet['Texte']=collected_tweet['text']
+        tweet['Date']=collected_tweet['created_at']
+        returned_tweets.append(tweet)
+    createjson(returned_tweets,'Data/' + name + '.json')
