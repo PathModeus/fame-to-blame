@@ -80,3 +80,13 @@ def insult_frequencies(data) :
                 insult_freq[word] = 1
 
     return insult_freq
+
+def most_frequent_insult(data) : 
+    max = 0
+    most_frequent_swear_word = str()
+    iter = insult_frequencies(data)
+    for cle, valeur in iter.items():
+        if valeur > max : 
+            max = valeur
+            most_frequent_swear_word = cle
+    return cle
