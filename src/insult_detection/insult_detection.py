@@ -26,7 +26,7 @@ def detect_insult_tweet(tweet):
     insults : a list of strings
     """
     insults=[]
-    sentence=TextBlob(tweet['Texte'])
+    sentence=TextBlob(tweet)
     str_tweet=""
     for word in sentence.words:
         word=word.singularize()
@@ -52,7 +52,7 @@ def detect_insults_tweets(data):
     """
     data_insults={}
     for i in range(len(data)):
-        data_insults[str(i+1)]=[detect_insult_tweet(tweet) for tweet in data[i][2]]
+        data_insults[str(i+1)]=[detect_insult_tweet(tweet) for tweet in data[i][2]['Texte']]
     return data_insults
 
 def insult_frequencies(data) : 
