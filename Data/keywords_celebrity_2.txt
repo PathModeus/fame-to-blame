@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 ZemmourEric
 Zemmour
 Zemour
-=======
-ZemmourEric
->>>>>>> f72ffbd (Adaptation collection)
-=======
-ZemmourEric
-Zemmour
-Zemour
->>>>>>> c6d9d35 (Adaptation des fonctions collect + collecte pour plusieurs celebrites)
-=======
-ZemmourEric
->>>>>>> main
