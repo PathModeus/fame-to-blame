@@ -21,7 +21,12 @@ def collection(celebrities_amount):
         twitter_api = twitter_setup('C:/Users/gaspa/OneDrive/Documents/CS/Coding Weeks')
         keywords = get_candidate_queries(num_celebrity, 'Data/keywords_celebrity_')
         name=keywords[0]
-        result=get_tweets_from_candidates_search_queries(keywords,twitter_api)+get_replies_to_candidate(num_celebrity,twitter_api)+get_retweets_of_candidate(num_celebrity,twitter_api)
+        candidate_tweets = get_tweets_from_candidates_search_queries(keywords,twitter_api)
+        replies = get_replies_to_candidate(num_celebrity,twitter_api)
+        retweets = get_retweets_of_candidate(num_celebrity,twitter_api)
+        if replies == "This twitter user does not exist." or retweets == "This twitter user does not exist.":
+            return "This twitter user does not exist."
+        result = candidate_tweets + replies + retweets
         for status in result:
             try:
                 tweets.append(status._json) #pylint: disable=protected-access
@@ -31,3 +36,5 @@ def collection(celebrities_amount):
         dataframe=pd.DataFrame.from_dict(extractjson('Data/' + name + '.json'))
         collect.append([int(num_celebrity),name,dataframe])
     return collect
+
+print(collection(1))
