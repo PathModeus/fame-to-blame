@@ -1,9 +1,10 @@
-import numpy as np
-
 '''
 The module analyses different datas on the tweets collected,
 like the frequency of salty tweets, the mean of the lenght of salty tweets...
 '''
+import numpy as np
+
+
 
 def salty_test(tweet):
     '''
