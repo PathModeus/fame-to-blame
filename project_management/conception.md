@@ -1,6 +1,7 @@
 - Sprint 1 et 2 : Gaspard et Matthieu -> DONE
 - Sprint 3 : Ludovic et Mathilde -> DONE
 - Sprint 4 : Siméon et Tom
+- Sprint 5 : Tom
 
 Sprint 1 :
 Collecte des tweets par personnalité
@@ -21,24 +22,26 @@ Renvoyer la fréquence d'insultes pour un utilisateur
 Fonctionnalité 7 : Calculs
 Fonctionnalité 8 : Affichage
 
+Sprint 5 :
+Paramétrer le main pour que l'utilisation du programme puisse se faire
+Fonctionnalité 9 : Coder le main
+
 MVP
 
-Sprint 5:
+Sprint 6:
 Classement des personnalités les plus insultées
-Fonctionnalité 9 : Calculs
-Fonctionnalité 10 : Affichage
-
-Sprint 6 :
-Développer une app avec Dash
-Fonctionnalité 11 : Permettre à l'utilisateur de choisir les personnalités
-Fonctionnalité 12 : Interface graphique
+Fonctionnalité 10 : Calculs
+Fonctionnalité 11 : Affichage
 
 Sprint 7 :
-WordCloud
-Fonctionnalité 13 : WordCloud pour chaque personnalité
+Développer une app avec Dash
+Fonctionnalité 12 : Permettre à l'utilisateur de choisir les personnalités
+Fonctionnalité 13 : Interface graphique
 
 Sprint 8 :
+WordCloud
+Fonctionnalité 14 : WordCloud pour chaque personnalité
+
+Sprint 9 :
 IA qui apprend les formules insultantes
-Fonctionnalité 14 : Mise en place d'une chaîne d'apprentissage supervisé
-
-
+Fonctionnalité 15 : Mise en place d'une chaîne d'apprentissage supervisé
