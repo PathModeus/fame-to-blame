@@ -34,7 +34,7 @@ def rank(list,i):
     return pos
 
 
-def frequency(tweets):
+def insult_frequency(tweets):
     '''
     returns the frequency of tweet containing insults
     '''
@@ -61,7 +61,7 @@ def ranking(list_of_tweets):
     '''
     freq=[]
     for tweets in list_of_tweets:
-        freq.append(frequency(tweets))
+        freq.append(insult_frequency(tweets))
     ordered=[list_of_tweets[0]]
     for i in range(1,len(list_of_tweets)):
         pos=rank(freq[:i+1],i)
