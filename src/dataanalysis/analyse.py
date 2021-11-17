@@ -8,7 +8,9 @@ def salty(tweet):
     '''
     Returns True if the tweet contains an insult and False if not
     '''
-    return tweet
+    if tweet==[]:
+        return False
+    return True
 
 def salty_list(tweets):
     '''
