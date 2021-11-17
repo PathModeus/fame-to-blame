@@ -6,8 +6,8 @@ import tkinter as tk
 from tkinter import ttk
 import os
 
-PATH='' #The path to the directory of credentials.py
 NUM_OF_CEL=1 #Number of celebrities chose by the user
+PATH='' #The path to the directory of credentials.py
 PEOPLES=[] #List of People to study and the keywords to use with
 
 def start():
