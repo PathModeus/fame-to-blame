@@ -26,6 +26,24 @@ def twitter_setup(abs_path):
     api = tweepy.API(auth)
     return api
 
+def get_candidate_queries(number, file_path):
+    """
+    Generate and return a list of string queries for the API from the file file_path_number.txt
+    :param number: the number of the celebrity
+    :param file_path: the common part of the path to the datas, ex : path/to/keywords_celebrity_
+    :return: (list) a list of string queries that can be done to the search API independently
+    """
+    try:
+        final_path = file_path+str(number)+".txt"
+        with open(final_path, 'r',encoding='utf-8') as fichier:
+            queries = []
+            for ligne in fichier:
+                ligne = ligne.rstrip()
+                queries.append(ligne)
+            return queries
+    except FileNotFoundError:
+        return "The requested datas are not available in our database."
+
 def get_tweets_from_candidates_search_queries(queries, twitter_api):
     """
     returns the tweets corresponding to the queries
@@ -41,7 +59,7 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
             tweets.append(tweet)
     return tweets
 
-def get_replies_to_candidate(name, twitter_api):
+def get_replies_to_candidate(number, twitter_api):
     """
     returns the tweets replying to the candidate
     :param number: the number of the celebrity
@@ -49,6 +67,11 @@ def get_replies_to_candidate(name, twitter_api):
     :return: (list) a list containing the tweets replying to the candidate
 
     """
+    queries = get_candidate_queries(
+        number, 'Data/keywords_celebrity_')
+    if queries == "The requested datas are not available in our database.":
+        return "This candidate is not in our database"
+    name = queries[0]
     user_id=get_id(name,twitter_api)
     if user_id == "This twitter user does not exist.":
         return user_id
@@ -62,7 +85,7 @@ def get_replies_to_candidate(name, twitter_api):
     return replies
 
 
-def get_retweets_of_candidate(name, twitter_api):
+def get_retweets_of_candidate(number, twitter_api):
     """
     returns the retweets of the last tweet of the candidate
     :param number: the number of the celebrity
@@ -70,6 +93,10 @@ def get_retweets_of_candidate(name, twitter_api):
     :return: (list) a list containing the tweets retweeting the last tweet of the candidate
 
     """
+    queries = get_candidate_queries(number, 'Data/keywords_celebrity_')
+    if queries == "The requested datas are not available in our database.":
+        return "This candidate is not in our database"
+    name = queries[0]
     user_id=get_id(name,twitter_api)
     if user_id == "This twitter user does not exist.":
         return user_id
