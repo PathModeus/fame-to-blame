@@ -15,7 +15,6 @@ def start():
     This is the first function to be executed.
     It allows the user to enter a Path to credentials.py and submit it.
     """
-    
 
     def check_path(*args):
         """
@@ -37,14 +36,12 @@ def start():
         input_celebrity_number()
 
 
-
-    
     window = tk.Tk()
     window.title("Fame to Blame")
     my_label = ttk.Label(window, text="Please enter the path to the directory of credentials.py")
     my_text_field_var = tk.StringVar("")
     my_text_field = ttk.Entry(window, textvariable=my_text_field_var)
-    my_message = ttk.Label(window, text="Please be sure that the path doesn't contain '\\' but '/' instead")
+    my_message = ttk.Label(window, text="Please be sure the path doesn't have '\\' but '/' instead")
     my_button = ttk.Button(window, text="Enter", state="disabled", command=click_enter)
     my_label.pack()
     my_text_field.pack()
@@ -52,7 +49,6 @@ def start():
     my_message.pack()
     my_text_field_var.trace("w", check_path)
     window.mainloop()
-    
 
 def input_celebrity_number():
     """
