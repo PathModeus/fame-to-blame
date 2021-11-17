@@ -8,6 +8,12 @@ from textblob import TextBlob
 from textblob import Word
 import json
 
+from insult_detection.csv_to_list import convert_database
+
+
+PATH='data/swear_words_database.csv'
+swear_words_data=convert_database(PATH)
+
 '''Fonction qui filtre les mots qui n'ont pas trop d'occurences'''
 '''Valeur du filtre à ajuster'''
 
@@ -15,19 +21,14 @@ import json
 def antibrouillard(text):
     d = {}
     mots = text.split(' ')
+    u = []
     for x in mots:
         var_convert = TextBlob(x)
         y = var_convert
         y = Word(y).lemmatize()
-        if y not in d:
-            d[str(y)] = 1
-        else:
-            d[str(y)] += 1
-    u = []
-    for x in d:
-        if d[x] < 4:
-            for i in range(d[x]):
-                u.append(x)
+        y = str(y)
+        if y in swear_words_data : 
+            u.append(y)
     v = "".join(u)
     return v
 
