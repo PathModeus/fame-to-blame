@@ -24,7 +24,9 @@ def collection(celebrities_amount):
         candidate_tweets = get_tweets_from_candidates_search_queries(keywords,twitter_api)
         replies = get_replies_to_candidate(num_celebrity,twitter_api)
         retweets = get_retweets_of_candidate(num_celebrity,twitter_api)
-        if replies == "This twitter user does not exist." or retweets == "This twitter user does not exist.":
+        if replies == "This twitter user does not exist.":
+            return "This twitter user does not exist."
+        if retweets == "This twitter user does not exist.":
             return "This twitter user does not exist."
         result = candidate_tweets + replies + retweets
         for status in result:
