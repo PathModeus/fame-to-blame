@@ -72,7 +72,10 @@ def get_replies_to_candidate(number, twitter_api):
     if queries == "The requested datas are not available in our database.":
         return "This candidate is not in our database"
     name = queries[0]
-    tweet = collect_by_user(get_id(name,twitter_api), twitter_api, 1)
+    user_id=get_id(name,twitter_api)
+    if user_id == "This twitter user does not exist.":
+        return user_id
+    tweet = collect_by_user(user_id, twitter_api, 1)
     tweet_id = tweet[0].id
     replies = tweet
     pot_replies = twitter_api.search_tweets(q='to:'+name)
@@ -94,7 +97,10 @@ def get_retweets_of_candidate(number, twitter_api):
     if queries == "The requested datas are not available in our database.":
         return "This candidate is not in our database"
     name = queries[0]
-    tweet = collect_by_user(get_id(name, twitter_api), twitter_api, 1)
+    user_id=get_id(name,twitter_api)
+    if user_id == "This twitter user does not exist.":
+        return user_id
+    tweet = collect_by_user(user_id, twitter_api, 1)
     tweet_id = tweet[0].id
     retweets = twitter_api.get_retweets(id=tweet_id)
     return retweets
@@ -143,9 +149,12 @@ def get_id(screen_name,twitter_api):
     """
     if screen_name == '':
         return "Please enter a screen name."
-    user = twitter_api.get_user(screen_name=screen_name)
-    user_id = user.id_str
-    return user_id
+    try:
+        user = twitter_api.get_user(screen_name=screen_name)
+        user_id = user.id_str
+        return user_id
+    except tweepy.errors.NotFound:
+        return "This twitter user does not exist."
 
 
 def collect(keyword,twitter_api):
