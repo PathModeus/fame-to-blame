@@ -8,7 +8,7 @@ import csv
 
 def convert_database(doc):
     """Return a list of the data stocked in a csv file
-    
+
     Parameters
     -----------
     doc : csv file
@@ -23,6 +23,6 @@ def convert_database(doc):
         for row in spamreader:
             database.append(row[0])
     return database
-PATH_TO_DATABASE='data/swear_words_database.csv'
 
+PATH_TO_DATABASE='data/swear_words_database.csv'
 swear_words_data=convert_database(PATH_TO_DATABASE)
