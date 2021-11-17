@@ -23,6 +23,9 @@ def convert_database(doc):
         for row in spamreader:
             database.append(row[0])
     return database
+<<<<<<< HEAD
 PATH_TO_DATABASE='data/swear_words_database.csv'
 
 swear_words_data=convert_database(PATH_TO_DATABASE)
+=======
+>>>>>>> wkB
