@@ -11,7 +11,7 @@ Insult detection module
 
 from textblob import TextBlob
 from textblob import Word
-from csv_to_list import convert_database
+from src.insult_detection.csv_to_list import convert_database
 
 PATH='data/swear_words_database.csv'
 swear_words_data=convert_database(PATH)
@@ -32,10 +32,12 @@ def detect_insult_tweet(tweet):
         word=word.singularize
         word=Word(word)
         word=word.lemmatize
-        str_tweet+=word
-        for insult in swear_words_data:
-            if insult in str_tweet:
-                insults.append(insult)
+        str_tweet+=str(word)
+    str_tweet_min=str_tweet.lower()   
+    #print(str_tweet)
+    for insult in swear_words_data:
+        if insult in str_tweet_min:
+            insults.append(insult)
     return insults
 
 def detect_insults_tweets(data):
