@@ -29,14 +29,12 @@ def detect_insult_tweet(tweet):
     sentence=TextBlob(tweet['Texte'])
     str_tweet=""
     for word in sentence.words:
-        word=word.singularize
-        word=Word(word)
-        word=word.lemmatize
-        str_tweet+=str(word)
-    str_tweet_min=str_tweet.lower()   
-    #print(str_tweet)
+        word=word.singularize()
+        word=Word(word).lemmatize()
+        str_tweet+=' '+word
+    str_tweet=str_tweet.lower()  
     for insult in swear_words_data:
-        if insult in str_tweet_min:
+        if insult in str_tweet:
             insults.append(insult)
     return insults
 
@@ -45,7 +43,8 @@ def detect_insults_tweets(data):
         Each list of list contains the insults in one tweet
     Parameters
     ----------
-    tweet : a dataframe panda with a key 'Texte'
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
 
     Returns
     --------
