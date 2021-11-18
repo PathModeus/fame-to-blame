@@ -3,10 +3,10 @@ Main file to launch the collection of tweets
 """
 import json
 import pandas as pd
-from src.datacollection.collect import twitter_setup,get_candidate_queries
-from src.datacollection.collect import get_tweets_from_candidates_search_queries
-from src.datacollection.collect import get_replies_to_candidate,get_retweets_of_candidate
-from src.datacollection.store_tweet import store_tweets,extractjson
+from collect import twitter_setup
+from collect import get_tweets_from_candidates_search_queries
+from collect import get_replies_to_candidate,get_retweets_of_candidate
+from store_tweet import store_tweets,extractjson
 
 def collection(keywords,path,lang='en'):
     """

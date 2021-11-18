@@ -1,13 +1,13 @@
 """
-Insult detection module 
-    Description: 
+Insult detection module
+    Description:
         Detects and returns the insults in a tweet or a dataframe
     Contains:
         detect_insult_tweet(tweet) : returns a list of insults(type strings)
 
         detect_insults_tweets(data) : returns a dictionnary (per celebrity_ID) of list of lists,
         each sub-list containing the insults in one tweet
-    """
+"""
 
 from textblob import TextBlob
 from textblob import Word
@@ -38,15 +38,17 @@ def detect_insult_tweet(tweet,lang='en'):
         word=word.singularize()
         word=Word(word).lemmatize()
         str_tweet+=' '+word
-    str_tweet=str_tweet.lower()  
+    str_tweet=str_tweet.lower()
     for insult in swear_words_data:
         if insult in str_tweet:
             insults.append(insult)
     return insults
 
 def detect_insults_tweets(data,lang='en'):
-    """Return a  dictionnary of key celebrity_ID and for each key containing a list of lists
-        Each list of list contains the insults in one tweet
+    """
+    Returns a  dictionnary of key celebrity_ID and for each key containing a list of lists
+    Each list of list contains the insults in one tweet
+    
     Parameters
     ----------
     data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
@@ -61,14 +63,16 @@ def detect_insults_tweets(data,lang='en'):
         data_insults[str(i+1)]=[detect_insult_tweet(tweet, lang) for tweet in data[i][2]['Texte']]
     return data_insults
 
-def insult_frequencies(data,lang='en') : 
-    """Return a dictionnary of key swear_words and for each key containing the number of occurences 
+def insult_frequencies(data,lang='en') :
+    """
+    Returns a dictionnary of key swear_words and for each key containing the number of occurences 
     of the word in our tweet collection
+    
     Parameters
     ----------
     tweet : a dataframe panda with a key 'Texte'
 
-    Returns 
+    Returns
     -------
     insult_freq : a dictionnary
     """
@@ -77,9 +81,9 @@ def insult_frequencies(data,lang='en') :
         swear_words_data=swear_words_data_fr
     else:
         swear_words_data=swear_words_data_en
-    for i in range(len(data)) : 
+    for i in range(len(data)) :
         insults=[]
-        sentence = TextBlob( data[i]['Texte'] )
+        sentence = TextBlob(data[i]['Texte'] )
         str_tweet=""
         for word in sentence.words:
             word=word.singularize
@@ -87,16 +91,14 @@ def insult_frequencies(data,lang='en') :
             word=word.lemmatize
             if word in swear_words_data :
                 insult_freq[word] += 1
-            else : 
+            else :
                 insult_freq[word] = 1
     return insult_freq
 
-def most_frequent_insult(data) : 
+def most_frequent_insult(data) :
     max = 0
-    most_frequent_swear_word = str()
     iter = insult_frequencies(data)
     for cle, valeur in iter.items():
-        if valeur > max : 
+        if valeur > max :
             max = valeur
-            most_frequent_swear_word = cle
     return cle

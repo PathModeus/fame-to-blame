@@ -1,6 +1,5 @@
 import sys
 import pandas as pd
-sys.path.append('C:\\Users\\mneau\\Documents\\Coding_Weeks\\local_project\\fame-to-blame\\src\\datacollection')
 from analyse import frequency
 
 

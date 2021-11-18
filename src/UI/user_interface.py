@@ -4,11 +4,7 @@ This module is used to manage the user interface and to query the users and the 
 
 import tkinter as tk
 from tkinter import ttk
-from tkinter import *
 import os
-import tkinter
-from tkinter.constants import TOP
-from tkinter.ttk import *
 
 
 PATH='' #The path to the directory of credentials.py
@@ -45,9 +41,9 @@ def start():
     my_text_field_var.set(LANGUAGES[0])
     my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="enabled", command=click_enter, width = 20)
     opt=tk.OptionMenu(window, my_text_field_var, *LANGUAGES, command=change_language)
-    photo = PhotoImage(file = r"docs/logo_FtB.png") 
-    my_logo = tkinter.Button(window, image=photo, height=256, width= 256)
-    my_logo.pack(side = BOTTOM)
+    photo = tk.PhotoImage(file = r"docs/logo_FtB.png")
+    my_logo = tk.Button(window, image=photo, height=256, width= 256)
+    my_logo.pack(side = tk.BOTTOM)
     my_label.pack()
     opt.pack()
     my_button.pack()

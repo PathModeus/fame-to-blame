@@ -1,8 +1,10 @@
-"""csv_to_list module
+"""
+csv_to_list module
     Description :
         Converts a csv database into a list of strings (per line of the database)
     Contains:
-        convert_database : returns a list of strings"""
+        convert_database : returns a list of strings
+        """
 
 import csv
 
@@ -18,7 +20,7 @@ def convert_database(doc):
     database : list of strings of each line of the csv file
     """
     database=[]
-    with open(doc, newline='') as csvfile:
+    with open(doc, newline='', encoding="utf-8") as csvfile:
         spamreader = csv.reader(csvfile)
         for row in spamreader:
             database.append(row[0])

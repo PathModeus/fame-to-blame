@@ -63,4 +63,3 @@ def appli(datafram) :
     
     Timer(1,open_browser).start()
     app.run_server(debug=False)
-    

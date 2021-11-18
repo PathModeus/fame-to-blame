@@ -6,7 +6,7 @@ import os
 def cleanup(names):
     """
     Cleans up the Data folder by removing the json created by executing the main
-    :param names: (list) list of strings corresponding to the twitter @ of the last celebrities studied
+    :param names: list of str corresponding to the twitter @ of the last celebrities studied
     """
     try:
         for name in names:

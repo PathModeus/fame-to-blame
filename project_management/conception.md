@@ -1,7 +1,7 @@
 - Sprint 1 et 2 : Gaspard et Matthieu -> DONE
 - Sprint 3 : Ludovic et Mathilde -> DONE
-- Sprint 4 : Siméon et Tom
-- Sprint 5 : Tom
+- Sprint 4 : Siméon et Tom -> DONE
+- Sprint 5 : Tom -> DONE
 
 Sprint 1 :
 Collecte des tweets par personnalité
