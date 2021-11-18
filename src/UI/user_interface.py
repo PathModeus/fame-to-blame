@@ -4,7 +4,12 @@ This module is used to manage the user interface and to query the users and the 
 
 import tkinter as tk
 from tkinter import ttk
+from tkinter import *
 import os
+import tkinter
+from tkinter.constants import TOP
+from tkinter.ttk import *
+
 
 PATH='' #The path to the directory of credentials.py
 NUM_OF_CEL=1 #Number of celebrities chose by the user
@@ -38,8 +43,11 @@ def start():
     my_label = ttk.Label(window, text=TEXTS[LANGUAGE]['language_label'])
     my_text_field_var = tk.StringVar()
     my_text_field_var.set(LANGUAGES[0])
-    my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="enabled", command=click_enter)
+    my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="enabled", command=click_enter, width = 20)
     opt=tk.OptionMenu(window, my_text_field_var, *LANGUAGES, command=change_language)
+    photo = PhotoImage(file = r"docs/logo_FtB.png") 
+    my_logo = tkinter.Button(window, image=photo, height=800, width= 800)
+    my_logo.pack(side = BOTTOM)
     my_label.pack()
     opt.pack()
     my_button.pack()
@@ -72,10 +80,11 @@ def path_window():
 
 
     window = tk.Tk()
+    window.geometry("450x100")
     window.title("Fame to Blame")
     my_label = ttk.Label(window, text=TEXTS[LANGUAGE]['path_msg'])
     my_text_field_var = tk.StringVar("")
-    my_text_field = ttk.Entry(window, textvariable=my_text_field_var)
+    my_text_field = ttk.Entry(window, textvariable=my_text_field_var,width = 20)
     my_message = ttk.Label(window, text=TEXTS[LANGUAGE]['path_advise'])
     my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="disabled", command=click_enter)
     my_label.pack()
@@ -113,10 +122,11 @@ def input_celebrity_number():
             query_keyword(i)
 
     window = tk.Tk()
+    window.geometry("300x70")
     window.title("Fame to Blame")
     my_label = ttk.Label(window, text=TEXTS[LANGUAGE]['celebrity_label'])
     my_text_field_var = tk.StringVar("")
-    my_text_field = ttk.Entry(window, textvariable=my_text_field_var)
+    my_text_field = ttk.Entry(window, textvariable=my_text_field_var, width = 6)
     my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="disabled", command=click_enter)
     my_label.pack()
     my_text_field.pack()
@@ -148,7 +158,9 @@ def query_keyword(i):
 
     number=str(i+1)
     window = tk.Tk()
+
     window.title("Fame to Blame")
+    window.geometry("350x130")
     my_label_1 = ttk.Label(window, text=TEXTS[LANGUAGE]['@label']+number)
     my_label_2 = ttk.Label(window, text=TEXTS[LANGUAGE]['celebrity_advice'])
     my_label_3 = ttk.Label(window, text=TEXTS[LANGUAGE]['keywords_format'])

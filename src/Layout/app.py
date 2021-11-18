@@ -5,9 +5,10 @@ from dash import html
 import pandas as pd
 import webbrowser
 from threading import Timer
+from flask import request
 
 def appli(datafram) : 
-    datafram.sort_values(by=['frequency'], ascending = False)
+    datafram = datafram.sort_values(by=['frequency'], ascending = False)
     markdown_text = '''
     ### Swear words detector
     Interactive dashboard providing some statistics to analyse harassment on Twitter
@@ -39,17 +40,26 @@ def appli(datafram) :
         html.H1(children='Fame-to-Blame'),
         dcc.Markdown(children=markdown_text),
         html.Label('Number of tweets downloaded'),
-        dcc.Slider(
-        min=10,
-        max=1000,
-        marks={i: 'Label {}'.format(i) if i == 1 else str(i) for i in [10,100,200,500,1000]},
-        value=10,
-        ),
         html.H4(children='Ranking of the most insulted celebrities among those entered by the user'),
         generate_table(datafram)])
+
     port = 8050
     def open_browser():
         webbrowser.open_new("http://localhost:{}".format(port))
+    
+    def shutdown():
+        func = request.environ.get('werkzeug.server.shutdown')
+        if func is None:
+            raise RuntimeError('Not running with the Werkzeug Server')
+        func()
+    
+    @app.callback(dash.dependencies.Output('page-content', 'children'),
+              [dash.dependencies.Input('url', 'pathname')])
+
+    def display_page(pathname):
+        if pathname =='/shutdown':
+            shutdown()
+        return html.Div([html.H3('You are on page {}'.format(pathname))])
     
     Timer(1,open_browser).start()
     app.run_server(debug=False)
