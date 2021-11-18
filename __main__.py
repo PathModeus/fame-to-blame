@@ -8,28 +8,43 @@ from src.insult_detection.insult_detection import *
 from src.dataanalysis.analyse import *
 from src.Layout.twitter_wordcloud import * 
 from src.Layout.app import * 
+from carbonai import PowerMeter
 
 
-start()
-from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES,LANGUAGE
-set_of_data=[]
-names = []
-for celeb_number in range(1,NUM_OF_CEL+1):
-    user_keywords=PEOPLES[celeb_number-1]
-    keywords=converting_keywords(user_keywords)
-    names.append(keywords[0])
-    tweet_collection=collection(keywords,PATH,lang=LANGUAGE)
-    tweet_collection.insert(0,celeb_number)
-    set_of_data.append(tweet_collection)
-detect_insults=detect_insults_tweets(set_of_data)
-list_of_frequencies={'celebrity':[], 'frequency' : []}
-for celeb_number in range(1,NUM_OF_CEL+1):
-    frequency = insult_frequency(detect_insults[str(celeb_number)])
-    list_of_frequencies['celebrity'].append(names[celeb_number - 1])
-    list_of_frequencies['frequency'].append(frequency)
-cleanup(names)
-print(list_of_frequencies)
-print(detect_insults)
-print(pd.DataFrame.from_dict(list_of_frequencies))
-appli(pd.DataFrame.from_dict(list_of_frequencies))
+power_meter = PowerMeter.from_config('docs\config.json') 
 
+@power_meter.measure_power(
+    
+    package="main",
+    algorithm="insult detector",
+    step="refactoring",
+    data_type="tabular",
+    comments="first try of power-meter"
+
+)
+def main():
+
+    start()
+    from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES,LANGUAGE
+    set_of_data=[]
+    names = []
+    for celeb_number in range(1,NUM_OF_CEL+1):
+        user_keywords=PEOPLES[celeb_number-1]
+        keywords=converting_keywords(user_keywords)
+        names.append(keywords[0])
+        tweet_collection=collection(keywords,PATH,lang=LANGUAGE)
+        tweet_collection.insert(0,celeb_number)
+        set_of_data.append(tweet_collection)
+    detect_insults=detect_insults_tweets(set_of_data)
+    list_of_frequencies={'celebrity':[], 'frequency' : []}
+    for celeb_number in range(NUM_OF_CEL):
+        frequency = insult_frequency(detect_insults[str(celeb_number)])
+        list_of_frequencies['celebrity'].append(names[celeb_number])
+        list_of_frequencies['frequency'].append(frequency)
+    cleanup(names)
+    print(list_of_frequencies)
+    print(detect_insults)
+    print(pd.DataFrame.from_dict(list_of_frequencies))
+    #appli(pd.DataFrame.from_dict(list_of_frequencies))
+
+main()
