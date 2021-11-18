@@ -157,7 +157,7 @@ def get_id(screen_name,twitter_api):
         return "This twitter user does not exist."
 
 
-def collect(keyword,twitter_api,count = 1000):
+def collect(keyword,twitter_api,count = 1000,language='en'):
     """
     returns a list of tweets containing a specific keyword
     :param keyword: (str) the keyword we want to search
@@ -167,7 +167,7 @@ def collect(keyword,twitter_api,count = 1000):
     if not(isinstance(keyword,str)) or keyword == '':
         return "Please enter a valid keyword (string)."
     result = []
-    tweets = twitter_api.search_tweets(q=keyword, count = count)
+    tweets = twitter_api.search_tweets(q=keyword, count = count, lang=language)
     for tweet in tweets:
         result.append(tweet)
     return result
