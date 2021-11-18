@@ -54,7 +54,7 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
     """
     tweets = []
     for query in queries:
-        result = twitter_api.search_tweets(query)
+        result = collect(query,twitter_api)
         for tweet in result:
             tweets.append(tweet)
     return tweets
@@ -74,7 +74,7 @@ def get_replies_to_candidate(name, twitter_api):
     tweets_id = []
     for user_tweet in user_tweets:
         tweets_id.append(user_tweet.id)
-    pot_replies = twitter_api.search_tweets(q='to:'+name)
+    pot_replies = collect('to'+name, twitter_api)
     replies=[]
     for pot_reply in pot_replies:
         if pot_reply.in_reply_to_status_id in tweets_id:
