@@ -7,7 +7,24 @@ fame-to-blame is a python program for analysing tweets filtered in the API datab
 
 
 Prerequisite
-First of all, be sure you have a credentials.py file in the same folder than fame-to-blame folder, with your twitter CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN and ACCESS_SECRET.
+First of all, you must install the following modules :
+-csv
+-dash
+-json
+-matplotlib.pyplot
+-numpy
+-os
+-pandas
+-PIL
+-pytest
+-scipy
+-sys
+-textblob
+-time
+-tkinter
+-tweepy
+-wordcloud
+Also, be sure you have a credentials.py file in the same folder than fame-to-blame folder, with your twitter CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN and ACCESS_SECRET.
 Then you can run __main__.py from fame-to-blame and just follow the instructions!
 Enjoy! =)
 

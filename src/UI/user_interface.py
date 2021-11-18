@@ -9,7 +9,7 @@ import os
 PATH='' #The path to the directory of credentials.py
 NUM_OF_CEL=1 #Number of celebrities chose by the user
 PEOPLES=[] #List of People to study and the keywords to use with
-LANGUAGE='En'
+LANGUAGE='en'
 
 
 
@@ -168,8 +168,13 @@ def query_keyword(i):
 
 
 TEXTS={
+<<<<<<< HEAD
     "En": {
         "language_label":"Please select your language.",
+=======
+    "en": {
+        "language_label":"Please select your language.", 
+>>>>>>> bd039e3fbfd065d8b7a6c350e2cd07a1e6e3f334
         "path_advise":"Be sure the path doesn't have '\\' but '/' instead",
         "enter":"Enter", "path_msg": "Please enter the path to the directory of credentials.py",
         "keywords_format": "Please respect the format : keyword 1, keyword 2, ...",
@@ -177,7 +182,7 @@ TEXTS={
         "@label": "Please enter the twitter @ of the people number ",
         "celebrity_advice": "Enter some keywords associated to this people"},
 
-    "Fr": {
+    "fr": {
         "language_label":"Merci de sélectionner votre langue.",
         "path_advise": "Assurez-vous que le chemin d'accès ne contient pas de '\\' mais des '/' à la place.",
         "enter":"Entrer","path_msg":"Merci d'entrer le chemin d'accès vers le répertoire de credentials.py",
@@ -187,4 +192,4 @@ TEXTS={
         "celebrity_advice": "Entrez quelques mots clefs associés à cette personne."}
         }
 
-LANGUAGES=['En','Fr']
+LANGUAGES=['en','fr']
