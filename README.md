@@ -20,22 +20,22 @@ pip install name_of_the_module
 ```
 
 The necessary modules are:  
-* csv  
 * dash  
-* json  
+* dash_bootstrap_components  
 * matplotlib.pyplot  
-* numpy  
-* os  
 * pandas  
 * PIL  
 * pytest  
 * scipy  
-* sys  
 * textblob  
-* time  
 * tkinter  
 * tweepy  
-* wordcloud
+* wordcloud  
+* carbonai
+
+Also to install :  
+* [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022) and by using it install the workload to handle C++ in order to use the wordcloud package  
+* [Intel Power Gadget](https://www.intel.com/content/www/us/en/developer/articles/tool/power-gadget.html?wapkw=intel%20power%20gadget) to use carbonai
 
 Before using the program, make sure to have a file named credentials.py, containing your access keys as strings, named exactly like this : CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN and ACCESS_SECRET.
 
