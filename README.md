@@ -32,6 +32,7 @@ The necessary modules are:
 * tweepy  
 * wordcloud  
 * carbonai
+* python-Levenshtein
 
 Also to install :  
 * [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022) and by using it install the workload to handle C++ in order to use the wordcloud package  
