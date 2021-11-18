@@ -3,7 +3,6 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 import pandas as pd
-import subprocess
 
 def appli(datafram) : 
     markdown_text = '''
@@ -65,6 +64,6 @@ def appli(datafram) :
         ),
         html.H4(children='Classement des célébrités les plus frequemment insultées sur Twitter'),
         generate_table(datafram)])
-        
-    app.run_server(debug=True)
+
+    app.run_server(debug=False)
     
