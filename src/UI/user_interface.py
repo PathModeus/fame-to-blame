@@ -168,13 +168,8 @@ def query_keyword(i):
 
 
 TEXTS={
-<<<<<<< HEAD
-    "En": {
-        "language_label":"Please select your language.",
-=======
     "en": {
         "language_label":"Please select your language.", 
->>>>>>> bd039e3fbfd065d8b7a6c350e2cd07a1e6e3f334
         "path_advise":"Be sure the path doesn't have '\\' but '/' instead",
         "enter":"Enter", "path_msg": "Please enter the path to the directory of credentials.py",
         "keywords_format": "Please respect the format : keyword 1, keyword 2, ...",

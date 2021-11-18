@@ -3,6 +3,8 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 import pandas as pd
+import webbrowser
+from threading import Timer
 
 def appli(datafram) : 
     datafram.sort_values(by=['frequency'], ascending = False)
@@ -65,6 +67,10 @@ def appli(datafram) :
         ),
         html.H4(children='Classement des célébrités les plus frequemment insultées sur Twitter'),
         generate_table(datafram)])
-
+    port = 8050
+    def open_browser():
+        webbrowser.open_new("http://localhost:{}".format(port))
+    
+    Timer(1,open_browser).start()
     app.run_server(debug=False)
     
