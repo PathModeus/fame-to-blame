@@ -45,7 +45,7 @@ def start():
     my_text_field_var.set(LANGUAGES[0])
     my_button = ttk.Button(window, text=TEXTS[LANGUAGE]['enter'], state="enabled", command=click_enter, width = 20)
     opt=tk.OptionMenu(window, my_text_field_var, *LANGUAGES, command=change_language)
-    photo = PhotoImage(file = r"C:\Users\Ludov\Documents\CW\FAME-TO-BLAME\src\UI\logo_FtB.png") 
+    photo = PhotoImage(file = r"docs/logo_FtB.png") 
     my_logo = tkinter.Button(window, image=photo, height=800, width= 800)
     my_logo.pack(side = BOTTOM)
     my_label.pack()
