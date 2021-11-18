@@ -18,20 +18,3 @@ def converting_keywords(keywords):
     """
     list_keywords=keywords.split(', ')
     return list_keywords
-
-def writing_keyword(celeb_number,keywords):
-    """
-    Writes the keyword in the txt file Data/keywords_celebrity_celeb_number.txt
-    :param celeb_number: (int) the number of the celebrity
-    :param keywords: (list) list of strings containing the keywords we want to write in the file
-    """
-    try:
-        path = 'Data/keywords_celebrity_' + str(celeb_number) + '.txt'
-        with open(path, 'w',encoding='utf-8') as fichier:
-            for keyword in keywords:
-                fichier.write(keyword + '\n')
-        return "The files are created."
-    except FileNotFoundError:
-        return "The file does not exist."
-
-cleanup()

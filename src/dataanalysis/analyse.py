@@ -10,7 +10,9 @@ def salty_test(tweet):
     '''
     Returns True if the tweet contains an insult and False if not
     '''
-    return tweet
+    if tweet==[]:
+        return False
+    return True
 
 def salty_list(tweets):
     """returns the list of the salty tweets and the list of the non-salty tweets
@@ -52,7 +54,7 @@ def rank(list_of_values,indice):
     return pos
 
 
-def frequency(tweets):
+def insult_frequency(tweets):
     """returns the frequency of tweet containing insults
 
     Parameters
@@ -105,7 +107,7 @@ def ranking(list_of_tweets):
     """
     freq=[] #frequence of insults in a list of tweets
     for tweets in list_of_tweets:
-        freq.append(frequency(tweets))
+        freq.append(insult_frequency(tweets))
     ordered=[list_of_tweets[0]]
     for i in range(1,len(list_of_tweets)):
         pos=rank(freq[:i+1],i)
