@@ -11,11 +11,11 @@ def test_detect_insult_tweet():
     assert detect_insult_tweet(tweet3)==['shit','suck']
     assert detect_insult_tweet(tweet4)==['shit','suck']
 
-
+test_detect_insult_tweet()
 
 data=[[1,'@1',[tweet1,tweet2]],[2,'@2',[tweet3]]]
 
 def test_detect_insults_tweets():
     assert detect_insults_tweets(data)=={'1':[['hot chick','shit'],[]],'2':[['shit','suck']]}
 
-
+test_detect_insults_tweets()

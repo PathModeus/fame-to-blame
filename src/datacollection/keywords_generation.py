@@ -1,6 +1,14 @@
 """
 Functions that allow the user to select the keywords he want to search
 """
+import os
+
+def cleanup(celeb_amount):
+    """
+    Cleans up the Data folder by removing the files containing the keywords
+    """
+    for i in range(1,celeb_amount+1):
+        os.remove('Data/keywords_celebrity_' + str(i) + '.txt')
 
 def converting_keywords(keywords):
     """
