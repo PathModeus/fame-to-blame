@@ -25,7 +25,8 @@ detect_insults=detect_insults_tweets(set_of_data)
 list_of_frequencies={}
 for celeb_number in range(1,NUM_OF_CEL+1):
     frequency = insult_frequency(detect_insults[str(celeb_number)])
-    list_of_frequencies[names[celeb_number - 1]] = [frequency]
+    list_of_frequencies[names[celeb_number-1]] = frequency
+cleanup(names)
 print(list_of_frequencies)
 print(detect_insults)
 print(pd.DataFrame.from_dict(list_of_frequencies))
