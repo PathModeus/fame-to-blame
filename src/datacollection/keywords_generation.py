@@ -21,5 +21,7 @@ def converting_keywords(keywords):
     :param keywords: (str) all the keywords separated by commas, ex : 'Macron,Emmanuel,président'
     :return: (list) list of strings containing each one a keyword
     """
+    if keywords[-2:]==', ':
+        return [keywords[:-2]]
     list_keywords=keywords.split(', ')
     return list_keywords
