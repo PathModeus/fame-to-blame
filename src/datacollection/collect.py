@@ -44,7 +44,7 @@ def get_candidate_queries(number, file_path):
     except FileNotFoundError:
         return "The requested datas are not available in our database."
 
-def get_tweets_from_candidates_search_queries(queries, twitter_api):
+def get_tweets_from_candidates_search_queries(queries, twitter_api,lang='en'):
     """
     returns the tweets corresponding to the queries
     :param queries: list of strings containing queries for the api (mostly keywords)
@@ -54,12 +54,12 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
     """
     tweets = []
     for query in queries:
-        result = collect(query,twitter_api)
+        result = collect(query,twitter_api,lang=lang)
         for tweet in result:
             tweets.append(tweet)
     return tweets
 
-def get_replies_to_candidate(name, twitter_api):
+def get_replies_to_candidate(name, twitter_api,lang='en'):
     """
     returns the tweets replying to the candidate
     :param number: the number of the celebrity
@@ -74,7 +74,7 @@ def get_replies_to_candidate(name, twitter_api):
     tweets_id = []
     for user_tweet in user_tweets:
         tweets_id.append(user_tweet.id)
-    pot_replies = collect('to'+name, twitter_api)
+    pot_replies = collect('to'+name, twitter_api,lang=lang)
     replies=[]
     for pot_reply in pot_replies:
         if pot_reply.in_reply_to_status_id in tweets_id:
@@ -82,7 +82,7 @@ def get_replies_to_candidate(name, twitter_api):
     return replies
 
 
-def get_retweets_of_candidate(name, twitter_api):
+def get_retweets_of_candidate(name, twitter_api,lang='en'):
     """
     returns the retweets of the last tweet of the candidate
     :param number: the number of the celebrity
@@ -97,7 +97,7 @@ def get_retweets_of_candidate(name, twitter_api):
     tweets_id = []
     for user_tweet in user_tweets:
         tweets_id.append(user_tweet.id)
-    pot_retweets = collect('@' + name, twitter_api, 1000)
+    pot_retweets = collect('@' + name, twitter_api, 1000,lang=lang)
     retweets = []
     for pot_retweet in pot_retweets:
         if pot_retweet.is_quote_status :
@@ -157,7 +157,7 @@ def get_id(screen_name,twitter_api):
         return "This twitter user does not exist."
 
 
-def collect(keyword,twitter_api,count = 1000,language='en'):
+def collect(keyword,twitter_api,count = 1000,lang='en'):
     """
     returns a list of tweets containing a specific keyword
     :param keyword: (str) the keyword we want to search
@@ -167,7 +167,7 @@ def collect(keyword,twitter_api,count = 1000,language='en'):
     if not(isinstance(keyword,str)) or keyword == '':
         return "Please enter a valid keyword (string)."
     result = []
-    tweets = twitter_api.search_tweets(q=keyword, count = count, lang=language)
+    tweets = twitter_api.search_tweets(q=keyword, count = count, lang=lang)
     for tweet in tweets:
         result.append(tweet)
     return result

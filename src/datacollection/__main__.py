@@ -8,7 +8,7 @@ from src.datacollection.collect import get_tweets_from_candidates_search_queries
 from src.datacollection.collect import get_replies_to_candidate,get_retweets_of_candidate
 from src.datacollection.store_tweet import store_tweets,extractjson
 
-def collection(keywords,path):
+def collection(keywords,path,lang='en'):
     """
     Collects and stores the tweets talking about one of the studied celebrity
     :param celebrity_amount: (int) number of celebrities studied
@@ -18,9 +18,9 @@ def collection(keywords,path):
     twitter_api = twitter_setup(path)
     tweets=[]
     name=keywords[0]
-    candidate_tweets = get_tweets_from_candidates_search_queries(keywords,twitter_api)
-    replies = get_replies_to_candidate(name,twitter_api)
-    retweets = get_retweets_of_candidate(name,twitter_api)
+    candidate_tweets = get_tweets_from_candidates_search_queries(keywords,twitter_api,lang=lang)
+    replies = get_replies_to_candidate(name,twitter_api,lang=lang)
+    retweets = get_retweets_of_candidate(name,twitter_api,lang=lang)
     if replies == "This twitter user does not exist.":
         return "This twitter user does not exist."
     if retweets == "This twitter user does not exist.":
