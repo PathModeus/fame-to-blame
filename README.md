@@ -38,13 +38,13 @@ Also to install :
 * [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022) and by using it install the workload to handle C++ in order to use the wordcloud package  
 * [Intel Power Gadget](https://www.intel.com/content/www/us/en/developer/articles/tool/power-gadget.html?wapkw=intel%20power%20gadget) to use carbonai
 
-Before using the program, make sure to have a file named credentials.py, containing your access keys as strings, named exactly like this : CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN and ACCESS_SECRET.
+Before using the program, make sure to have a file named credentials.py, containing your access keys as strings, named exactly like this : CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN and ACCESS_SECRET and run the intel power gadget to gather the data for carbonAI.
 
 Finally, have a stable internet connection in order to collect the tweets and show the results.
 
 ## Usage
 
-Once you completed the prerequisite, you can open the file \_\_main.py__ from fame-to-blame and execute it.  
+Once you completed the prerequisite, you can open the file __main.py__ from fame-to-blame and execute it.  
 A window will open, where you must select your language, enter the absolute path to the folder containing the file credentials.py (be careful to respect the format : no backslashes, only slashes). You can then enter the twitter usernames (you must enter a valid twitter username : someone's twitter @) of the celebrities whom you want to run the program with, as well as optional keywords to search about this celebrity (once again, respect the format : separate the keywords with ", ").  
 Finally, a window will open in your web browser in which you can see the results.
 
