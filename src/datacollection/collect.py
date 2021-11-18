@@ -44,7 +44,7 @@ def get_candidate_queries(number, file_path):
     except FileNotFoundError:
         return "The requested datas are not available in our database."
 
-def get_tweets_from_candidates_search_queries(queries, twitter_api):
+def get_tweets_from_candidates_search_queries(queries, twitter_api,lang='en'):
     """
     returns the tweets corresponding to the queries
     :param queries: list of strings containing queries for the api (mostly keywords)
@@ -54,12 +54,12 @@ def get_tweets_from_candidates_search_queries(queries, twitter_api):
     """
     tweets = []
     for query in queries:
-        result = twitter_api.search_tweets(query)
+        result = collect(query,twitter_api,lang=lang)
         for tweet in result:
             tweets.append(tweet)
     return tweets
 
-def get_replies_to_candidate(number, twitter_api):
+def get_replies_to_candidate(name, twitter_api,lang='en'):
     """
     returns the tweets replying to the candidate
     :param number: the number of the celebrity
@@ -67,25 +67,22 @@ def get_replies_to_candidate(number, twitter_api):
     :return: (list) a list containing the tweets replying to the candidate
 
     """
-    queries = get_candidate_queries(
-        number, 'Data/keywords_celebrity_')
-    if queries == "The requested datas are not available in our database.":
-        return "This candidate is not in our database"
-    name = queries[0]
     user_id=get_id(name,twitter_api)
     if user_id == "This twitter user does not exist.":
         return user_id
-    tweet = collect_by_user(user_id, twitter_api, 1)
-    tweet_id = tweet[0].id
-    replies = tweet
-    pot_replies = twitter_api.search_tweets(q='to:'+name)
+    user_tweets = collect_by_user(user_id, twitter_api, 20)
+    tweets_id = []
+    for user_tweet in user_tweets:
+        tweets_id.append(user_tweet.id)
+    pot_replies = collect('to'+name, twitter_api,lang=lang)
+    replies=[]
     for pot_reply in pot_replies:
-        if pot_reply.in_reply_to_status_id_str == str(tweet_id):
+        if pot_reply.in_reply_to_status_id in tweets_id:
             replies.append(pot_reply)
     return replies
 
 
-def get_retweets_of_candidate(number, twitter_api):
+def get_retweets_of_candidate(name, twitter_api,lang='en'):
     """
     returns the retweets of the last tweet of the candidate
     :param number: the number of the celebrity
@@ -93,16 +90,19 @@ def get_retweets_of_candidate(number, twitter_api):
     :return: (list) a list containing the tweets retweeting the last tweet of the candidate
 
     """
-    queries = get_candidate_queries(number, 'Data/keywords_celebrity_')
-    if queries == "The requested datas are not available in our database.":
-        return "This candidate is not in our database"
-    name = queries[0]
     user_id=get_id(name,twitter_api)
     if user_id == "This twitter user does not exist.":
         return user_id
-    tweet = collect_by_user(user_id, twitter_api, 1)
-    tweet_id = tweet[0].id
-    retweets = twitter_api.get_retweets(id=tweet_id)
+    user_tweets = collect_by_user(user_id, twitter_api, 20)
+    tweets_id = []
+    for user_tweet in user_tweets:
+        tweets_id.append(user_tweet.id)
+    pot_retweets = collect('@' + name, twitter_api, 1000,lang=lang)
+    retweets = []
+    for pot_retweet in pot_retweets:
+        if pot_retweet.is_quote_status :
+            if pot_retweet.quoted_status_id in tweets_id:
+                retweets.append(pot_retweet)
     return retweets
 
 
@@ -157,7 +157,7 @@ def get_id(screen_name,twitter_api):
         return "This twitter user does not exist."
 
 
-def collect(keyword,twitter_api):
+def collect(keyword,twitter_api,count = 1000,lang='en'):
     """
     returns a list of tweets containing a specific keyword
     :param keyword: (str) the keyword we want to search
@@ -167,8 +167,7 @@ def collect(keyword,twitter_api):
     if not(isinstance(keyword,str)) or keyword == '':
         return "Please enter a valid keyword (string)."
     result = []
-    tweets = twitter_api.search_tweets(
-        keyword, language="french", rpp=100)
+    tweets = twitter_api.search_tweets(q=keyword, count = count, lang=lang)
     for tweet in tweets:
         result.append(tweet)
     return result

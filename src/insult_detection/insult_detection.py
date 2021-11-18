@@ -13,9 +13,11 @@ from textblob import TextBlob
 from textblob import Word
 from src.insult_detection.csv_to_list import convert_database
 
-PATH='data/swear_words_database.csv'
-swear_words_data=convert_database(PATH)
-def detect_insult_tweet(tweet):
+PATH='Data/swear_words_database.csv'
+PATH_FR='Data/swear_words_database_fr.csv'
+swear_words_data_en=convert_database(PATH)
+swear_words_data_fr=convert_database(PATH_FR)
+def detect_insult_tweet(tweet,lang='en'):
     """Return a list of the insults contained in a tweet
     Parameters
     ----------
@@ -26,26 +28,29 @@ def detect_insult_tweet(tweet):
     insults : a list of strings
     """
     insults=[]
-    sentence=TextBlob(tweet['Texte'])
+    sentence=TextBlob(tweet)
     str_tweet=""
+    if lang=='fr':
+        swear_words_data=swear_words_data_fr
+    else:
+        swear_words_data=swear_words_data_en
     for word in sentence.words:
-        word=word.singularize
-        word=Word(word)
-        word=word.lemmatize
-        str_tweet+=str(word)
-    str_tweet_min=str_tweet.lower()   
-    #print(str_tweet)
+        word=word.singularize()
+        word=Word(word).lemmatize()
+        str_tweet+=' '+word
+    str_tweet=str_tweet.lower()  
     for insult in swear_words_data:
-        if insult in str_tweet_min:
+        if insult in str_tweet:
             insults.append(insult)
     return insults
 
-def detect_insults_tweets(data):
+def detect_insults_tweets(data,lang='en'):
     """Return a  dictionnary of key celebrity_ID and for each key containing a list of lists
         Each list of list contains the insults in one tweet
     Parameters
     ----------
-    tweet : a dataframe panda with a key 'Texte'
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
 
     Returns
     --------
@@ -53,10 +58,10 @@ def detect_insults_tweets(data):
     """
     data_insults={}
     for i in range(len(data)):
-        data_insults[str(i+1)]=[detect_insult_tweet(tweet) for tweet in data[i][2]]
+        data_insults[str(i+1)]=[detect_insult_tweet(tweet, lang) for tweet in data[i][2]['Texte']]
     return data_insults
 
-def insult_frequencies(data) : 
+def insult_frequencies(data,lang='en') : 
     """Return a dictionnary of key swear_words and for each key containing the number of occurences 
     of the word in our tweet collection
     Parameters
@@ -68,6 +73,10 @@ def insult_frequencies(data) :
     insult_freq : a dictionnary
     """
     insult_freq = {}
+    if lang=='fr':
+        swear_words_data=swear_words_data_fr
+    else:
+        swear_words_data=swear_words_data_en
     for i in range(len(data)) : 
         insults=[]
         sentence = TextBlob( data[i]['Texte'] )
@@ -80,7 +89,6 @@ def insult_frequencies(data) :
                 insult_freq[word] += 1
             else : 
                 insult_freq[word] = 1
-
     return insult_freq
 
 def most_frequent_insult(data) : 
