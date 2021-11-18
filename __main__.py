@@ -14,6 +14,7 @@ names=[]
 for celeb_number in range(1,NUM_OF_CEL+1):
     user_keywords=PEOPLES[celeb_number-1]
     keywords=converting_keywords(user_keywords)
+    names.append(keywords[0])
     tweet_collection=collection(keywords,PATH)
     tweet_collection.insert(0,celeb_number)
     set_of_data.append(tweet_collection)
@@ -21,8 +22,7 @@ detect_insults=detect_insults_tweets(set_of_data)
 list_of_frequencies={}
 for celeb_number in range(1,NUM_OF_CEL+1):
     frequency = insult_frequency(detect_insults[str(celeb_number)])
-    list_of_frequencies[keywords[0]] = frequency
-    names.append(keywords[0])
+    list_of_frequencies[names[celeb_number-1]] = frequency
 cleanup(names)
 print(list_of_frequencies)
 print(detect_insults)
