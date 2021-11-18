@@ -6,6 +6,7 @@ import pandas as pd
 import subprocess
 
 def appli(datafram) : 
+    datafram.sort_values(by=['frequency'], ascending = False)
     markdown_text = '''
     ### Pull up
     Gif Bézos sacrée bande de toquards
