@@ -11,14 +11,14 @@ from src.Layout.app import *
 
 
 start()
-from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES
+from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES,LANGUAGE
 set_of_data=[]
 names = []
 for celeb_number in range(1,NUM_OF_CEL+1):
     user_keywords=PEOPLES[celeb_number-1]
     keywords=converting_keywords(user_keywords)
     names.append(keywords[0])
-    tweet_collection=collection(keywords,PATH)
+    tweet_collection=collection(keywords,PATH,lang=LANGUAGE)
     tweet_collection.insert(0,celeb_number)
     set_of_data.append(tweet_collection)
 detect_insults=detect_insults_tweets(set_of_data)
