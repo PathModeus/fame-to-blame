@@ -16,7 +16,6 @@ for celeb_number in range(1,NUM_OF_CEL+1):
     tweet_collection=collection(keywords,PATH)
     tweet_collection.insert(0,celeb_number)
     set_of_data.append(tweet_collection)
-print(len(set_of_data[0][-1]))
 detect_insults=detect_insults_tweets(set_of_data)
 list_of_frequencies=[]
 for celeb_number in range(1,NUM_OF_CEL+1):
