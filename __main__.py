@@ -6,11 +6,11 @@ from src.datacollection.keywords_generation import *
 from src.datacollection.__main__ import *
 from src.insult_detection.insult_detection import *
 from src.dataanalysis.analyse import *
-from src.Layout.twitter_wordcloud import * 
-from src.Layout.app import * 
+from src.Layout.twitter_wordcloud import *
+from src.Layout.app import *
 from carbonai import PowerMeter
 
-power_meter = PowerMeter.from_config('docs\config.json') 
+power_meter = PowerMeter.from_config('docs/config.json')
 
 
 @power_meter.measure_power(
@@ -29,8 +29,8 @@ def main():
     set_of_data=[]
     names = []
     flag=0
-    for celeb_number in range(1,NUM_OF_CEL+1):
-        user_keywords=PEOPLES[celeb_number-1]
+    for celeb_number in range(NUM_OF_CEL):
+        user_keywords=PEOPLES[celeb_number]
         keywords=converting_keywords(user_keywords)
         names.append(keywords[0])
         tweet_collection=collection(keywords,PATH,lang=LANGUAGE)
