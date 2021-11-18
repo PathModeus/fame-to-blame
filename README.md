@@ -2,12 +2,18 @@
 CODING WEEKS 2021-2022
 
 
-To start
-fame-to-blame is a python program for analysing tweets filtered in the API database of Twitter. This is the 4th project of the second week of the CentraleSupélec Coding Weeks
+Fame to Blame is a python program to collect tweets about celebrities chosen by the user and to analyze them by detecting whether they are offensive or not. The user is then able to see a ranking of the celebrities he submitted ordered by the frequency of tweets insulting them. This is a project taking part in the second week of the CentraleSupélec Coding Weeks
 
 
-Prerequisite
-First of all, you must install the following modules :
+## Setup 
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the necessary python modules, listed below.
+
+```bash
+pip install name_of_the_module
+```
+
+The necessary modules are:
 -csv
 -dash
 -json
@@ -28,15 +34,15 @@ Also, be sure you have a credentials.py file in the same folder than fame-to-bla
 Then you can run __main__.py from fame-to-blame and just follow the instructions!
 Enjoy! =)
 
+## Contact
 
-Contact - Authors
-If you have any question, you can contact one of the creators of the project named below.
-Tom Bray :          tom.bray@student-cs.fr
-Mathilde Jacquotot  mathilde.jacquotot@student-cs.fr
-Ludovic Mulat :     ludovic.mulat@student-cs.fr
-Siméon Boyer        simeon.boyer@student-cs.fr
-Matthieu Neau       matthieu.neau@student-cs.fr
-Gaspard Debiais     gaspard.debiais@student-cs.fr
+If you have any question, feel free to contact one of the creators of the project named below.  
+Tom Bray :          tom.bray@student-cs.fr  
+Mathilde Jacquotot :  mathilde.jacquotot@student-cs.fr  
+Ludovic Mulat :     ludovic.mulat@student-cs.fr  
+Siméon Boyer        simeon.boyer@student-cs.fr  
+Matthieu Neau       matthieu.neau@student-cs.fr  
+Gaspard Debiais     gaspard.debiais@student-cs.fr  
 
 
 Made with
@@ -46,11 +52,11 @@ gitlab
 handbook cs_codingweek_twitteranalysis_2021
 
 
-Contribution
+## Contributing
 This program is open source, you can do whatever you want with it.
 If you wish to contribute, you are free to manipulate the code. The names of folders and files are self-explanatory, describe what they do.
 
 
-Versions
-1.0 Dernière et unique version
+## Versions
+1.0 First and last version
 GitLab : https://gitlab-ovh-02.cloud.centralesupelec.fr/tom.bray/fame-to-blame/
