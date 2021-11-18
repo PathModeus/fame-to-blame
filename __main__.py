@@ -45,6 +45,7 @@ def main():
     if flag==0:
         detect_insults=detect_insults_tweets(set_of_data,lang=LANGUAGE)
         list_of_frequencies={'celebrity':[], 'frequency' : []}
+           
         for celeb_number in range(NUM_OF_CEL):
             frequency = insult_frequency(detect_insults[str(celeb_number)])
             list_of_frequencies['celebrity'].append(names[celeb_number])
@@ -54,6 +55,7 @@ def main():
         print(detect_insults)
         print(pd.DataFrame.from_dict(list_of_frequencies))
         appli(pd.DataFrame.from_dict(list_of_frequencies))
+        
     else : 
         print(str(flag) + ' celebrities you entered did not have a valid twitter username')
         print(set_of_data)

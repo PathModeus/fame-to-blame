@@ -50,6 +50,8 @@ Finally, a window will open in your web browser in which you can see the results
 
 Enjoy! =)
 
+If you want to use carbonAI, uncomment the commented block of powermeter in __main__ and comment the line 57 using appli().
+
 ## Contact
 
 If you have any question, feel free to contact one of the creators of the project named below.  
