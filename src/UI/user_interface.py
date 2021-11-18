@@ -19,7 +19,7 @@ def start():
     It allows the user to chose the language of the UI.
     """
 
-    
+
     def click_enter():
         """
         This function manages the event when the user clicks on Enter.
@@ -123,7 +123,7 @@ def input_celebrity_number():
     my_button.pack()
     my_text_field_var.trace("w", check_number)
     window.mainloop()
-
+    
 def query_keyword(i):
     """
     Requests the @ of the user to study and the keywords associated.
@@ -169,7 +169,7 @@ def query_keyword(i):
 
 TEXTS={
     "En": {
-        "language_label":"Please select your language.", 
+        "language_label":"Please select your language.",
         "path_advise":"Be sure the path doesn't have '\\' but '/' instead",
         "enter":"Enter", "path_msg": "Please enter the path to the directory of credentials.py",
         "keywords_format": "Please respect the format : keyword 1, keyword 2, ...",
