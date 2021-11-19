@@ -25,7 +25,10 @@ power_meter = PowerMeter.from_config('docs/config.json')
 
 )"""
 def main():
-
+"""
+Main function of the programm which coordinates the different modules.
+Just run it to start the app.
+"""
     start()
     from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES,LANGUAGE
     set_of_data=[]
@@ -51,9 +54,6 @@ def main():
             list_of_frequencies['celebrity'].append(names[celeb_number])
             list_of_frequencies['frequency'].append(frequency)
         cleanup(names)
-        print(list_of_frequencies)
-        print(detect_insults)
-        print(pd.DataFrame.from_dict(list_of_frequencies))
         appli(pd.DataFrame.from_dict(list_of_frequencies))
         
     else : 
