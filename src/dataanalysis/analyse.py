@@ -17,7 +17,8 @@ def salty_test(tweet):
     return True
 
 def salty_list(tweets):
-    """returns the list of the salty tweets and the list of the non-salty tweets
+    """
+    returns the list of the salty tweets and the list of the non-salty tweets
 
     Parameters
     ----------
@@ -28,8 +29,8 @@ def salty_list(tweets):
     salt : list of insultign elements in tweets
     nosalt : list of friendly elements in tweets
     """
-    salt=[] #insulting tweets
-    nosalt=[] #not salty tweets
+    salt=[]
+    nosalt=[]
     for single_tweet in tweets:
         if salty_test(single_tweet):
             salt.append(single_tweet)
@@ -38,7 +39,9 @@ def salty_list(tweets):
     return salt,nosalt
 
 def rank(list_of_values,indice):
-    """returns the rank of list[i] in list
+    """
+    returns the rank of the value in position 'indice'
+    in the list if it was ordered
 
     Parameters
     ----------
@@ -57,7 +60,8 @@ def rank(list_of_values,indice):
 
 
 def insult_frequency(tweets):
-    """returns the frequency of tweet containing insults
+    """
+    returns the frequency of tweet containing insults
 
     Parameters
     ----------
@@ -65,7 +69,7 @@ def insult_frequency(tweets):
 
     Returns
     --------
-    pos/tot : the proportion of tweets that are insulting in the list
+    prop/tot : the proportion of tweets that are insulting in the list
     """
     tot=len(tweets)
     prop=0 #number of salty tweets
@@ -76,7 +80,8 @@ def insult_frequency(tweets):
     return prop/tot
 
 def length(tweets):
-    """returns the mean of the length of tweets, salty tweets and non-salty tweets
+    """
+    returns the mean of the length of tweets, salty tweets and non-salty tweets
 
     Parameters
     ----------
@@ -95,7 +100,8 @@ def length(tweets):
     return mean_total,mean_salty,mean_nosalty
 
 def ranking(list_of_tweets):
-    """ordering a list of lists of tweets from the most insulting to the less insulting
+    """
+    ordering a list of lists of tweets from the most insulting to the less insulting
 
     Parameters
     ----------
@@ -110,6 +116,7 @@ def ranking(list_of_tweets):
     freq=[] #frequence of insults in a list of tweets
     for tweets in list_of_tweets:
         freq.append(insult_frequency(tweets))
+        #the list 'freq' can be ordered because it's a list of numbers
     ordered=[list_of_tweets[0]]
     for i in range(1,len(list_of_tweets)):
         pos=rank(freq[:i+1],i)
