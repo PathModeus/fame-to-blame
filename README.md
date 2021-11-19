@@ -45,7 +45,7 @@ Finally, have a stable internet connection in order to collect the tweets and sh
 ## Usage
 
 Once you completed the prerequisite, you can open the file \_\_main__.py from fame-to-blame and execute it.  
-A window will open, where you must select your language, enter the absolute path to the folder containing the file credentials.py (be careful to respect the format : no backslashes, only slashes). You can then enter the twitter usernames (you must enter a valid twitter username : someone's twitter @) of the celebrities whom you want to run the program with, as well as optional keywords to search about this celebrity (once again, respect the format : separate the keywords with ", ").  
+A window will open, where you must select your language, enter the absolute path to the folder containing the file credentials.py (be careful to respect the format : no backslashes, only slashes). You can then enter the twitter usernames (you must enter a valid twitter username : someone's twitter @) of the celebrities whom you want to run the program with, as well as optional keywords to search about this celebrity, like his family name (once again, respect the format : separate the keywords with ", ").  
 Finally, a window will open in your web browser in which you can see the results.
 
 Enjoy! =)
