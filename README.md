@@ -23,7 +23,7 @@ The necessary modules are:
 * carbonai  
 * dash  
 * dash_bootstrap_components  
-* matplotlib.pyplot  
+* matplotlib  
 * pandas  
 * PIL  
 * pytest  
