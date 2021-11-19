@@ -19,20 +19,20 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all the
 pip install name_of_the_module
 ```
 
-The necessary modules are:  
+The necessary modules are: 
+* carbonai  
 * dash  
 * dash_bootstrap_components  
 * matplotlib.pyplot  
 * pandas  
 * PIL  
 * pytest  
+* python-Levenshtein  
 * scipy  
 * textblob  
 * tkinter  
 * tweepy  
 * wordcloud  
-* carbonai
-* python-Levenshtein
 
 Also to install :  
 * [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022) and by using it install the workload to handle C++ in order to use the wordcloud package  
@@ -44,7 +44,7 @@ Finally, have a stable internet connection in order to collect the tweets and sh
 
 ## Usage
 
-Once you completed the prerequisite, you can open the file __main.py__ from fame-to-blame and execute it.  
+Once you completed the prerequisite, you can open the file \_\_main__.py from fame-to-blame and execute it.  
 A window will open, where you must select your language, enter the absolute path to the folder containing the file credentials.py (be careful to respect the format : no backslashes, only slashes). You can then enter the twitter usernames (you must enter a valid twitter username : someone's twitter @) of the celebrities whom you want to run the program with, as well as optional keywords to search about this celebrity (once again, respect the format : separate the keywords with ", ").  
 Finally, a window will open in your web browser in which you can see the results.
 

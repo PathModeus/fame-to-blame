@@ -25,7 +25,7 @@ def collection(keywords,path,lang='en'):
         return "This twitter user does not exist."
     if retweets == "This twitter user does not exist.":
         return "This twitter user does not exist."
-    result = candidate_tweets + replies + retweets
+    result = candidate_tweets + replies + retweets #list of tweets linked to the keyword
     for status in result:
         try:
             tweets.append(status._json) #pylint: disable=protected-access

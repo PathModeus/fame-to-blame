@@ -37,11 +37,12 @@ Sprint 7 :
 Développer une app avec Dash
 Fonctionnalité 12 : Permettre à l'utilisateur de choisir les personnalités
 Fonctionnalité 13 : Interface graphique
+Fonctionnalité 14 : Mesurer l'impact carbone de notre code avec CarbonAI
 
 Sprint 8 :
 WordCloud
-Fonctionnalité 14 : WordCloud pour chaque personnalité
+Fonctionnalité 15 : WordCloud pour chaque personnalité
 
 Sprint 9 :
 IA qui apprend les formules insultantes
-Fonctionnalité 15 : Mise en place d'une chaîne d'apprentissage supervisé
+Fonctionnalité 16 : Mise en place d'une chaîne d'apprentissage supervisé

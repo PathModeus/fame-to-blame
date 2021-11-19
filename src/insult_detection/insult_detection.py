@@ -18,6 +18,7 @@ PATH='Data/swear_words_database.csv'
 PATH_FR='Data/swear_words_database_fr.csv'
 swear_words_data_en=convert_database(PATH)
 swear_words_data_fr=convert_database(PATH_FR)
+
 def detect_insult_tweet(tweet,lang='en'):
     """
     Returns a list of the insults contained in a tweet
@@ -33,13 +34,14 @@ def detect_insult_tweet(tweet,lang='en'):
     insults=[]
     sentence=TextBlob(tweet)
     str_tweet=""
-    if lang=='fr':
+    if lang=='fr': #French
         swear_words_data=swear_words_data_fr
-    else:
+    else: #English
         swear_words_data=swear_words_data_en
     for word in sentence.words:
-        word=word.singularize()
-        word=Word(word).lemmatize()
+        if lang == 'en':
+            word=word.singularize()
+            word=Word(word).lemmatize()
         str_tweet+=' '+word
     str_tweet=str_tweet.lower()
     for insult in swear_words_data:
@@ -73,16 +75,17 @@ def insult_frequencies(data,lang='en') :
 
     Parameters
     ----------
-    tweet : a dataframe panda with a key 'Texte'
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
 
     Returns
     -------
     insult_freq : a dictionnary
     """
     insult_freq = {}
-    if lang=='fr':
+    if lang=='fr': #French
         swear_words_data=swear_words_data_fr
-    else:
+    else: #English
         swear_words_data=swear_words_data_en
     for i in data :
         sentence = TextBlob(i['Texte'])
@@ -90,19 +93,40 @@ def insult_frequencies(data,lang='en') :
             word=word.singularize
             word=Word(word)
             word=word.lemmatize
+            #We lemmatis to detect tweets that try to bypass the detection algorithm
+            #e.g. Micron to say Macron
             if word in swear_words_data :
                 insult_freq[word] += 1
             else :
                 insult_freq[word] = 1
     return insult_freq
 
+<<<<<<< HEAD
 def most_frequent_insult(data) :
     """
     Returns the most frequent insult from a dataset
+=======
+def most_frequent_insult(data) : 
+    """Return the most frequent insult, or '' if there's no insult in the data.
+
+    Parameters
+    ----------
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
+
+    Returns 
+    -------
+    most_frequent_swear_word : the insult that comes the most in the data.
+>>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81
     """
     max = 0
     iter = insult_frequencies(data)
     for cle, valeur in iter.items():
         if valeur > max :
             max = valeur
+<<<<<<< HEAD
     return cle
+=======
+            most_frequent_swear_word = cle
+    return most_frequent_swear_word
+>>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81
