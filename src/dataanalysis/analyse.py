@@ -105,13 +105,12 @@ def ranking(list_of_tweets):
 
     Parameters
     ----------
-    tweets : a list of tweets format string
+    list_of_tweets : a list of lists of tweet format string
 
     Returns
     --------
-    mean_total : the mean of the length of the tweets
-    mean_salty : the mean of the lenght of the insulting tweets
-    mean_nosalty : the mean of the length of the friendly tweets
+    ordered : returns the same list but ordered from the group of tweets that contains
+    the most insulting tweets to the one that contains the less insulting tweets.
     """
     freq=[] #frequence of insults in a list of tweets
     for tweets in list_of_tweets:
