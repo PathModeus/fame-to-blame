@@ -30,9 +30,9 @@ def detect_insult_tweet(tweet,lang='en'):
     insults=[]
     sentence=TextBlob(tweet)
     str_tweet=""
-    if lang=='fr':
+    if lang=='fr': #French
         swear_words_data=swear_words_data_fr
-    else:
+    else: #English
         swear_words_data=swear_words_data_en
     for word in sentence.words:
         word=word.singularize()
@@ -66,16 +66,17 @@ def insult_frequencies(data,lang='en') :
     of the word in our tweet collection
     Parameters
     ----------
-    tweet : a dataframe panda with a key 'Texte'
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
 
     Returns 
     -------
     insult_freq : a dictionnary
     """
     insult_freq = {}
-    if lang=='fr':
+    if lang=='fr': #French
         swear_words_data=swear_words_data_fr
-    else:
+    else: #English
         swear_words_data=swear_words_data_en
     for i in range(len(data)) : 
         insults=[]
@@ -85,6 +86,8 @@ def insult_frequencies(data,lang='en') :
             word=word.singularize
             word=Word(word)
             word=word.lemmatize
+            #We lemmatis to detect tweets that try to bypass the detection algorithm
+            #e.g. Micron to say Macron
             if word in swear_words_data :
                 insult_freq[word] += 1
             else : 
@@ -92,6 +95,17 @@ def insult_frequencies(data,lang='en') :
     return insult_freq
 
 def most_frequent_insult(data) : 
+    """Return the most frequent insult, or '' if there's no insult in the data.
+
+    Parameters
+    ----------
+    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
+    the dictionnary must contain the key 'Texte'
+
+    Returns 
+    -------
+    most_frequent_swear_word : the insult that comes the most in the data.
+    """
     max = 0
     most_frequent_swear_word = str()
     iter = insult_frequencies(data)
@@ -99,4 +113,4 @@ def most_frequent_insult(data) :
         if valeur > max : 
             max = valeur
             most_frequent_swear_word = cle
-    return cle
+    return most_frequent_swear_word
