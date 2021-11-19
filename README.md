@@ -19,20 +19,20 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all the
 pip install name_of_the_module
 ```
 
-The necessary modules are:  
+The necessary modules are: 
+* carbonai  
 * dash  
 * dash_bootstrap_components  
 * matplotlib.pyplot  
 * pandas  
 * PIL  
 * pytest  
+* python-Levenshtein  
 * scipy  
 * textblob  
 * tkinter  
 * tweepy  
 * wordcloud  
-* carbonai
-* python-Levenshtein
 
 Also to install :  
 * [Visual Studio Installer](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022) and by using it install the workload to handle C++ in order to use the wordcloud package  
