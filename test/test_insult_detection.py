@@ -1,9 +1,9 @@
 from textblob.blob import TextBlob, Word
 from src.insult_detection.insult_detection import detect_insult_tweet, detect_insults_tweets
-tweet1={"Texte":'shit! you are a hot chick' }
-tweet2={"Texte": 'Hot ! blabla chick'}
-tweet3={"Texte": 'Shit you SUCK'}
-tweet4={"Texte": 'Shits he sucked'}
+tweet1 = 'shit! you are a hot chick'
+tweet2 = 'Hot ! blabla chick'
+tweet3 = 'Shit you SUCK'
+tweet4 = 'Shits he sucked'
 
 def test_detect_insult_tweet():
     assert detect_insult_tweet(tweet1)==['hot chick','shit']

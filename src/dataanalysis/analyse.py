@@ -9,8 +9,7 @@ def salty_test(tweet):
     '''
     Returns True if the tweet contains an insult and False if not
     '''
-    insult=detect_insult_tweet(tweet)
-    if insult==[]: #if there's no insult in the tweet
+    if tweet==[]: #if there's no insult in the tweet
         return False
     return True
 

@@ -11,10 +11,6 @@ from src.datacollection.collect import *
 def test_twitter_setup():
     assert twitter_setup('C:/Users/gaspa/OneDrive/Documents/CS/Coding Weeks') is not None
 
-def test_get_candidate_queries():
-    assert get_candidate_queries(999,'false_path') == "The requested datas are not available in our database."
-    assert get_candidate_queries(1,'Data/keywords_celebrity_') == ['EmmanuelMacron']
-
 def test_get_tweets_from_candidates_search_queries():
     api = twitter_setup('C:/Users/gaspa/OneDrive/Documents/CS/Coding Weeks')
     assert get_tweets_from_candidates_search_queries([], api) == []
