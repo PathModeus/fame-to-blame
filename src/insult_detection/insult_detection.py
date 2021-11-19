@@ -36,8 +36,9 @@ def detect_insult_tweet(tweet,lang='en'):
     else: #English
         swear_words_data=swear_words_data_en
     for word in sentence.words:
-        word=word.singularize()
-        word=Word(word).lemmatize()
+        if lang == 'en':
+            word=word.singularize()
+            word=Word(word).lemmatize()
         str_tweet+=' '+word
     str_tweet=str_tweet.lower()  
     for insult in swear_words_data:
