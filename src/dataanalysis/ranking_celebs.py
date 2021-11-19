@@ -1,11 +1,6 @@
 import sys
 import pandas as pd
-<<<<<<< HEAD
-from analyse import frequency
-=======
-sys.path.append('C:\\Users\\mneau\\Documents\\Coding_Weeks\\local_project\\fame-to-blame\\src\\datacollection')
-from analyse import insult_frequency
->>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81
+from src.dataanalysis.analyse import insult_frequency
 
 
 def ranking(tweets_by_celebrities):

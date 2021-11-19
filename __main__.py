@@ -10,11 +10,11 @@ from src.datacollection.__main__ import collection
 from src.insult_detection.insult_detection import detect_insults_tweets
 from src.dataanalysis.analyse import insult_frequency
 from src.Layout.app import appli
-#from src.Layout.twitter_wordcloud import 
-"""
+
+
 power_meter = PowerMeter.from_config('docs/config.json')
 
-
+"""
 @power_meter.measure_power(
     
     package="main",
