@@ -18,7 +18,7 @@ def cleanup(names):
 def converting_keywords(keywords):
     """
     Converts a string containing the keywords separated by commas into a list of keywords
-    :param keywords: (str) all the keywords separated by commas, ex : 'Macron,Emmanuel,président'
+    :param keywords: (str) all the keywords separated by commas, ex : 'Macron, Emmanuel, président'
     :return: (list) list of strings containing each one a keyword
     """
     if keywords[-2:]==', ':
