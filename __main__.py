@@ -14,7 +14,6 @@ from src.Layout.app import appli
 """
 power_meter = PowerMeter.from_config('docs/config.json')
 
-
 @power_meter.measure_power(
     
     package="main",
