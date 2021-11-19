@@ -3,6 +3,7 @@ The module analyses different datas on the tweets collected,
 like the frequency of salty tweets, the mean of the lenght of salty tweets...
 '''
 import numpy as np
+from src.insult_detection.insult_detection import detect_insult_tweet
 
 
 
@@ -10,7 +11,8 @@ def salty_test(tweet):
     '''
     Returns True if the tweet contains an insult and False if not
     '''
-    if tweet==[]:
+    insult=detect_insult_tweet(tweet)
+    if insult==[]: #if there's no insult in the tweet
         return False
     return True
 
