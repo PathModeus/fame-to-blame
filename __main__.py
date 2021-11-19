@@ -25,10 +25,10 @@ power_meter = PowerMeter.from_config('docs/config.json')
 
 )"""
 def main():
-"""
-Main function of the programm which coordinates the different modules.
-Just run it to start the app.
-"""
+    """
+    Main function of the programm which coordinates the different modules.
+    Just run it to start the app.
+    """
     start()
     from src.UI.user_interface import PATH,NUM_OF_CEL,PEOPLES,LANGUAGE
     set_of_data=[]
