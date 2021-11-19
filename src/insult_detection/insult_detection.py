@@ -17,6 +17,7 @@ PATH='Data/swear_words_database.csv'
 PATH_FR='Data/swear_words_database_fr.csv'
 swear_words_data_en=convert_database(PATH)
 swear_words_data_fr=convert_database(PATH_FR)
+
 def detect_insult_tweet(tweet,lang='en'):
     """Return a list of the insults contained in a tweet
     Parameters

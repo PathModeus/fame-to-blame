@@ -26,24 +26,6 @@ def twitter_setup(abs_path):
     api = tweepy.API(auth)
     return api
 
-def get_candidate_queries(number, file_path):
-    """
-    Generate and return a list of string queries for the API from the file file_path_number.txt
-    :param number: the number of the celebrity
-    :param file_path: the common part of the path to the datas, ex : path/to/keywords_celebrity_
-    :return: (list) a list of string queries that can be done to the search API independently
-    """
-    try:
-        final_path = file_path+str(number)+".txt"
-        with open(final_path, 'r',encoding='utf-8') as fichier:
-            queries = []
-            for ligne in fichier:
-                ligne = ligne.rstrip()
-                queries.append(ligne)
-            return queries
-    except FileNotFoundError:
-        return "The requested datas are not available in our database."
-
 def get_tweets_from_candidates_search_queries(queries, twitter_api,lang='en'):
     """
     returns the tweets corresponding to the queries
@@ -97,7 +79,7 @@ def get_retweets_of_candidate(name, twitter_api,lang='en'):
     tweets_id = []
     for user_tweet in user_tweets:
         tweets_id.append(user_tweet.id)
-    pot_retweets = collect('@' + name, twitter_api, 1000,lang=lang)
+    pot_retweets = collect('@' + name, twitter_api,lang=lang)
     retweets = []
     for pot_retweet in pot_retweets:
         if pot_retweet.is_quote_status :
