@@ -1,5 +1,6 @@
 import dash
 from dash.html.Center import Center
+from dash.html.Table import Table
 import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
@@ -41,7 +42,8 @@ def appli(datafram) :
     [html.Tr([
     html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
     ]) for i in range(min(len(dataframe), max_rows))] , 
-    style = {'textAlign' : 'center', 'color' :  '#111111'})
+    style = {'textAlign' : 'center', 'color' :  '#111111'}, 
+    )
 
 
 
@@ -59,7 +61,7 @@ def appli(datafram) :
                                align = 'center',
                                style = get_page_heading_style()
         )
-        subtitle_header = dbc.Row([dbc.Col(get_page_heading_subtitle(), md=12)],
+        subtitle_header = dbc.Row([dbc.Col(get_page_heading_subtitle(), md=25)],
                                     align = 'center',
                                     style = get_page_heading_style()
         )
@@ -71,10 +73,11 @@ def appli(datafram) :
                     page_header[0],
                     page_header[1],
                     html.Hr(),
-                    html.Div(children = [html.H4(children = 'Ranking of the most insulted celebrities among those entered by the user' ),
-                                        generate_table(datafram)])
-
-        ],fluid = True, style = {'backgroundcolor' : '#F2DFCE', 'textAlign' : 'center'}
+                    dbc.Row([dbc.Col(children = 'Ranking of the most insulted celebrities among those entered by the user', md=25)],
+                                    align = 'center',
+                                    style = get_page_heading_style()),
+                    dbc.Row([dbc.Col(generate_table(datafram))], align = 'center')
+        ],fluid = False, style = {'backgroundcolor' : '#AAAAAA', 'textAlign' : 'center'}
         )
         return layout
 
