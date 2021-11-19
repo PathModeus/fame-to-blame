@@ -100,33 +100,3 @@ def insult_frequencies(data,lang='en') :
             else :
                 insult_freq[word] = 1
     return insult_freq
-
-<<<<<<< HEAD
-def most_frequent_insult(data) :
-    """
-    Returns the most frequent insult from a dataset
-=======
-def most_frequent_insult(data) : 
-    """Return the most frequent insult, or '' if there's no insult in the data.
-
-    Parameters
-    ----------
-    data : a list of lists of three elements [celebrity_ID,at_twitter,dictionnary]
-    the dictionnary must contain the key 'Texte'
-
-    Returns 
-    -------
-    most_frequent_swear_word : the insult that comes the most in the data.
->>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81
-    """
-    max = 0
-    iter = insult_frequencies(data)
-    for cle, valeur in iter.items():
-        if valeur > max :
-            max = valeur
-<<<<<<< HEAD
-    return cle
-=======
-            most_frequent_swear_word = cle
-    return most_frequent_swear_word
->>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81

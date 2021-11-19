@@ -86,10 +86,3 @@ def appli(datafram) :
     
     Timer(1,open_browser).start()
     app.run_server(debug=False)
-<<<<<<< HEAD
-=======
-
-d = {'celebrity' : ['barackobama','AnneHidalgo'], 'frequency' : [0.2 , 0.3]}
-d = pd.DataFrame.from_dict(d)
-appli(d)
->>>>>>> 1a23d834d19724affcd12dacf21e9a71ed8bed81
